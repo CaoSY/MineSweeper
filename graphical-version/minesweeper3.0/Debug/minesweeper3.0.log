@@ -1,0 +1,61 @@
+﻿生成启动时间为 2015/1/26 18:19:57。
+     1>项目“I:\2014秋季学期\扫雷资料\扫雷\minesweeper3.0\minesweeper3.0\minesweeper3.0.vcxproj”在节点 2 上(Build 个目标)。
+     1>ClCompile:
+         C:\Program Files (x86)\Microsoft Visual Studio 12.0\VC\bin\CL.exe /c /ZI /nologo /W3 /WX- /sdl /Od /Oy- /D WIN32 /D _DEBUG /D _CONSOLE /D _UNICODE /D UNICODE /Gm /EHsc /RTC1 /MDd /GS /fp:precise /Zc:wchar_t /Zc:forScope /Yu"stdafx.h" /Fp"Debug\minesweeper3.0.pch" /Fo"Debug\\" /Fd"Debug\vc120.pdb" /Gd /TP /analyze- /errorReport:prompt minesweeper3.0.cpp
+         minesweeper3.0.cpp
+     1>i:\2014秋季学期\扫雷资料\扫雷\minesweeper3.0\minesweeper3.0\minesweeper3.0.cpp(80): warning C4800: “int”: 将值强制为布尔值“true”或“false”(性能警告)
+     1>i:\2014秋季学期\扫雷资料\扫雷\minesweeper3.0\minesweeper3.0\minesweeper3.0.cpp(86): warning C4809: 切换语句有多余的“default”标签；给定所有可能的“case”标签
+     1>i:\2014秋季学期\扫雷资料\扫雷\minesweeper3.0\minesweeper3.0\minesweeper3.0.cpp(264): warning C4244: “参数”: 从“time_t”转换到“unsigned int”，可能丢失数据
+     1>i:\2014秋季学期\扫雷资料\扫雷\minesweeper3.0\minesweeper3.0\minesweeper3.0.cpp(269): warning C4244: “=”: 从“double”转换到“float”，可能丢失数据
+     1>i:\2014秋季学期\扫雷资料\扫雷\minesweeper3.0\minesweeper3.0\minesweeper3.0.cpp(270): warning C4244: “=”: 从“double”转换到“float”，可能丢失数据
+     1>i:\2014秋季学期\扫雷资料\扫雷\minesweeper3.0\minesweeper3.0\minesweeper3.0.cpp(271): warning C4244: “参数”: 从“float”转换到“int”，可能丢失数据
+     1>i:\2014秋季学期\扫雷资料\扫雷\minesweeper3.0\minesweeper3.0\minesweeper3.0.cpp(272): warning C4244: “参数”: 从“float”转换到“int”，可能丢失数据
+     1>i:\2014秋季学期\扫雷资料\扫雷\minesweeper3.0\minesweeper3.0\minesweeper3.0.cpp(273): warning C4244: “参数”: 从“float”转换到“int”，可能丢失数据
+     1>i:\2014秋季学期\扫雷资料\扫雷\minesweeper3.0\minesweeper3.0\minesweeper3.0.cpp(274): warning C4244: “参数”: 从“float”转换到“int”，可能丢失数据
+     1>i:\2014秋季学期\扫雷资料\扫雷\minesweeper3.0\minesweeper3.0\minesweeper3.0.cpp(275): warning C4244: “参数”: 从“float”转换到“int”，可能丢失数据
+     1>i:\2014秋季学期\扫雷资料\扫雷\minesweeper3.0\minesweeper3.0\minesweeper3.0.cpp(276): warning C4244: “参数”: 从“float”转换到“int”，可能丢失数据
+     1>i:\2014秋季学期\扫雷资料\扫雷\minesweeper3.0\minesweeper3.0\minesweeper3.0.cpp(277): warning C4244: “参数”: 从“float”转换到“int”，可能丢失数据
+     1>i:\2014秋季学期\扫雷资料\扫雷\minesweeper3.0\minesweeper3.0\minesweeper3.0.cpp(278): warning C4244: “参数”: 从“float”转换到“int”，可能丢失数据
+     1>i:\2014秋季学期\扫雷资料\扫雷\minesweeper3.0\minesweeper3.0\minesweeper3.0.cpp(279): warning C4244: “参数”: 从“float”转换到“int”，可能丢失数据
+     1>i:\2014秋季学期\扫雷资料\扫雷\minesweeper3.0\minesweeper3.0\minesweeper3.0.cpp(280): warning C4244: “参数”: 从“float”转换到“int”，可能丢失数据
+     1>i:\2014秋季学期\扫雷资料\扫雷\minesweeper3.0\minesweeper3.0\minesweeper3.0.cpp(281): warning C4244: “参数”: 从“float”转换到“int”，可能丢失数据
+     1>i:\2014秋季学期\扫雷资料\扫雷\minesweeper3.0\minesweeper3.0\minesweeper3.0.cpp(292): warning C4244: “=”: 从“float”转换到“int”，可能丢失数据
+     1>i:\2014秋季学期\扫雷资料\扫雷\minesweeper3.0\minesweeper3.0\minesweeper3.0.cpp(293): warning C4244: “=”: 从“float”转换到“int”，可能丢失数据
+     1>i:\2014秋季学期\扫雷资料\扫雷\minesweeper3.0\minesweeper3.0\minesweeper3.0.cpp(310): warning C4244: “=”: 从“float”转换到“int”，可能丢失数据
+     1>i:\2014秋季学期\扫雷资料\扫雷\minesweeper3.0\minesweeper3.0\minesweeper3.0.cpp(311): warning C4244: “=”: 从“float”转换到“int”，可能丢失数据
+     1>i:\2014秋季学期\扫雷资料\扫雷\minesweeper3.0\minesweeper3.0\minesweeper3.0.cpp(322): warning C4800: “int”: 将值强制为布尔值“true”或“false”(性能警告)
+     1>i:\2014秋季学期\扫雷资料\扫雷\minesweeper3.0\minesweeper3.0\minesweeper3.0.cpp(389): warning C4293: “<<”: Shift 计数为负或过大，其行为未定义
+     1>i:\2014秋季学期\扫雷资料\扫雷\minesweeper3.0\minesweeper3.0\minesweeper3.0.cpp(407): warning C4293: “<<”: Shift 计数为负或过大，其行为未定义
+     1>i:\2014秋季学期\扫雷资料\扫雷\minesweeper3.0\minesweeper3.0\minesweeper3.0.cpp(572): warning C4244: “参数”: 从“float”转换到“int”，可能丢失数据
+     1>i:\2014秋季学期\扫雷资料\扫雷\minesweeper3.0\minesweeper3.0\minesweeper3.0.cpp(578): warning C4244: “参数”: 从“float”转换到“int”，可能丢失数据
+     1>i:\2014秋季学期\扫雷资料\扫雷\minesweeper3.0\minesweeper3.0\minesweeper3.0.cpp(652): warning C4244: “参数”: 从“time_t”转换到“unsigned int”，可能丢失数据
+     1>i:\2014秋季学期\扫雷资料\扫雷\minesweeper3.0\minesweeper3.0\minesweeper3.0.cpp(689): warning C4244: “参数”: 从“float”转换到“int”，可能丢失数据
+     1>i:\2014秋季学期\扫雷资料\扫雷\minesweeper3.0\minesweeper3.0\minesweeper3.0.cpp(692): warning C4244: “参数”: 从“float”转换到“int”，可能丢失数据
+     1>i:\2014秋季学期\扫雷资料\扫雷\minesweeper3.0\minesweeper3.0\minesweeper3.0.cpp(693): warning C4244: “参数”: 从“float”转换到“int”，可能丢失数据
+     1>i:\2014秋季学期\扫雷资料\扫雷\minesweeper3.0\minesweeper3.0\minesweeper3.0.cpp(699): warning C4244: “参数”: 从“float”转换到“int”，可能丢失数据
+     1>i:\2014秋季学期\扫雷资料\扫雷\minesweeper3.0\minesweeper3.0\minesweeper3.0.cpp(704): warning C4244: “参数”: 从“float”转换到“int”，可能丢失数据
+     1>i:\2014秋季学期\扫雷资料\扫雷\minesweeper3.0\minesweeper3.0\minesweeper3.0.cpp(705): warning C4244: “参数”: 从“float”转换到“int”，可能丢失数据
+     1>i:\2014秋季学期\扫雷资料\扫雷\minesweeper3.0\minesweeper3.0\minesweeper3.0.cpp(706): warning C4244: “参数”: 从“float”转换到“int”，可能丢失数据
+     1>i:\2014秋季学期\扫雷资料\扫雷\minesweeper3.0\minesweeper3.0\minesweeper3.0.cpp(707): warning C4244: “参数”: 从“float”转换到“int”，可能丢失数据
+     1>i:\2014秋季学期\扫雷资料\扫雷\minesweeper3.0\minesweeper3.0\minesweeper3.0.cpp(708): warning C4244: “参数”: 从“float”转换到“int”，可能丢失数据
+     1>i:\2014秋季学期\扫雷资料\扫雷\minesweeper3.0\minesweeper3.0\minesweeper3.0.cpp(709): warning C4244: “参数”: 从“float”转换到“int”，可能丢失数据
+     1>i:\2014秋季学期\扫雷资料\扫雷\minesweeper3.0\minesweeper3.0\minesweeper3.0.cpp(710): warning C4244: “参数”: 从“float”转换到“int”，可能丢失数据
+     1>i:\2014秋季学期\扫雷资料\扫雷\minesweeper3.0\minesweeper3.0\minesweeper3.0.cpp(711): warning C4244: “参数”: 从“float”转换到“int”，可能丢失数据
+     1>i:\2014秋季学期\扫雷资料\扫雷\minesweeper3.0\minesweeper3.0\minesweeper3.0.cpp(712): warning C4244: “参数”: 从“float”转换到“int”，可能丢失数据
+     1>i:\2014秋季学期\扫雷资料\扫雷\minesweeper3.0\minesweeper3.0\minesweeper3.0.cpp(713): warning C4244: “参数”: 从“float”转换到“int”，可能丢失数据
+     1>i:\2014秋季学期\扫雷资料\扫雷\minesweeper3.0\minesweeper3.0\minesweeper3.0.cpp(714): warning C4244: “参数”: 从“float”转换到“int”，可能丢失数据
+     1>i:\2014秋季学期\扫雷资料\扫雷\minesweeper3.0\minesweeper3.0\minesweeper3.0.cpp(715): warning C4244: “参数”: 从“float”转换到“int”，可能丢失数据
+     1>i:\2014秋季学期\扫雷资料\扫雷\minesweeper3.0\minesweeper3.0\minesweeper3.0.cpp(716): warning C4244: “参数”: 从“float”转换到“int”，可能丢失数据
+     1>i:\2014秋季学期\扫雷资料\扫雷\minesweeper3.0\minesweeper3.0\minesweeper3.0.cpp(717): warning C4244: “参数”: 从“float”转换到“int”，可能丢失数据
+     1>i:\2014秋季学期\扫雷资料\扫雷\minesweeper3.0\minesweeper3.0\minesweeper3.0.cpp(718): warning C4244: “参数”: 从“float”转换到“int”，可能丢失数据
+     1>i:\2014秋季学期\扫雷资料\扫雷\minesweeper3.0\minesweeper3.0\minesweeper3.0.cpp(719): warning C4244: “参数”: 从“float”转换到“int”，可能丢失数据
+     1>i:\2014秋季学期\扫雷资料\扫雷\minesweeper3.0\minesweeper3.0\minesweeper3.0.cpp(945): warning C4800: “int”: 将值强制为布尔值“true”或“false”(性能警告)
+       Link:
+         C:\Program Files (x86)\Microsoft Visual Studio 12.0\VC\bin\link.exe /ERRORREPORT:PROMPT /OUT:"I:\2014秋季学期\扫雷资料\扫雷\minesweeper3.0\Debug\minesweeper3.0.exe" /INCREMENTAL /NOLOGO kernel32.lib user32.lib gdi32.lib winspool.lib comdlg32.lib advapi32.lib shell32.lib ole32.lib oleaut32.lib uuid.lib odbc32.lib odbccp32.lib /MANIFEST /MANIFESTUAC:"level='asInvoker' uiAccess='false'" /manifest:embed /DEBUG /PDB:"I:\2014秋季学期\扫雷资料\扫雷\minesweeper3.0\Debug\minesweeper3.0.pdb" /SUBSYSTEM:CONSOLE /TLBID:1 /DYNAMICBASE /NXCOMPAT /IMPLIB:"I:\2014秋季学期\扫雷资料\扫雷\minesweeper3.0\Debug\minesweeper3.0.lib" /MACHINE:X86 Debug\minesweeper3.0.obj
+         Debug\stdafx.obj
+         minesweeper3.0.vcxproj -> I:\2014秋季学期\扫雷资料\扫雷\minesweeper3.0\Debug\minesweeper3.0.exe
+     1>已完成生成项目“I:\2014秋季学期\扫雷资料\扫雷\minesweeper3.0\minesweeper3.0\minesweeper3.0.vcxproj”(Build 个目标)的操作。
+
+生成成功。
+
+已用时间 00:00:08.06
