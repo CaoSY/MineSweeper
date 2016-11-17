@@ -17,72 +17,72 @@ version number: 3.0
 #include<fstream>
 #pragma comment(lib,"Winmm.lib")
 using namespace std;
-////////////////////////////////////////////////////////////////////È«¾Ö±äÁ¿
+////////////////////////////////////////////////////////////////////å…¨å±€å˜é‡
 TCHAR user_name[20]=L"admin";
-bool new_flag;						//ÅĞ¶ÏÊÇ·ñÊÇĞÂÓÃ»§
-int row,column,mine_number;			//ĞĞ£¬ÁĞ£¬²»ÄÜµãµÄ¸ñÊı
+bool new_flag;						//åˆ¤æ–­æ˜¯å¦æ˜¯æ–°ç”¨æˆ·
+int row,column,mine_number;			//è¡Œï¼Œåˆ—ï¼Œä¸èƒ½ç‚¹çš„æ ¼æ•°
 bool field[52][52]={0};
 int scaned[52][52]={0},	mine_number_map[50][50]={0};
-bool replaychoice=0;			//¸´ÅÌ±ê¼Ç
-bool first_click=1;				//µÚÒ»´Î±£»¤ÓÃ
-float width,height;				//Íø¸ñ¿í¶È	
-int mouse_x,mouse_y;			//µãÖĞµÄ¸ñ×ÓµÄ×ø±ê
-bool win_or_lose_sound;			//¿ØÖÆÒôĞ§
-IMAGE number1,number2,number3,number4,number5,number6,number7,number8;		//´æÊı×ÖÕÕÆ¬µÄ°Ë¸ö¶ÔÏó
-IMAGE grid_picture,mark_picture,hole;			//Íø¸ñÍ¼Æ¬£¬±ê¼ÇÍ¼Æ¬£¬¶´
-IMAGE picture_hidden;							//Ëæ»ú±³¾°
-int picture_number;				//Ëæ»úÍ¼Æ¬µÄ±àºÅ
-HCURSOR hcur;					//Êó±ê¹â±ê
-HWND hwnd;						//´°¿Ú¾ä±ú
-clock_t time_mark;				//¼ÆÊ±ÓÃ
-int duration=0;					//ÒÑÓÃÊ±³¤
-///////////////////////////////////////////////////////////////////¹©µ÷ÓÃº¯Êı
-void begineffect();		//¿ªÊ¼Ğ§¹û
-void loadingeffect();//ÒòÎªÒôÀÖ¿ªÍ·ÓĞ´óÔ¼4ÃëµÄ¿Õ°×£¬ËùÒÔÒª¼ÓÒ»¸öloading
-int firstmenu();    //³õ·Ã¡ª¡ª0£¬¹éÀ´¡ª¡ª1
-void new_user_register();//ĞÂÓÃ»§×¢²á
-void welcome_back();     //ÀÏÓÃ»§µÇÂ½
-void main_menu();		//Ö÷²Ëµ¥
-void seeyoueffect();			//½áÊøĞ§¹û
-void game();			//ÓÎÏ·º¯Êı
-int loadrecord();		//¶Áµµ
-bool replayquestion();	//ÖØÍæÑ¯ÎÊ
-void scan_map(const int x,const int y);			//Õ¹¿ªµØÍ¼µÄµİ¹éº¯Êı
-void initialize_field();					//³õÊ¼»¯µØÍ¼
-void showfield();					//Êä³öµØÍ¼
-bool win();							//ÅĞ¶ÏÊÇ·ñ»ñÊ¤
-int suspend();						//ÔİÍ£
-void storefield();					//´æµµ
-void fail_effect();					//Ê§°ÜĞ§¹û
-void win_effect();					//³É¹¦Ğ§¹û
-void attribute();					//ÓÎÏ·ÊôĞÔ
-int newgame();						//ÄÑ¶ÈÑ¡Ôñ
-bool selfdefine();					//×Ô¶¨ÒåÄÑ¶È
-void correct_memory();				//°ïÖúÈ·¶¨ÊÇ·ñÒÑ¾­ÓĞ¹ı¼ÇÂ¼
-void picturechoice(int n);			//¼ÓÔØÑ¡¶¨µÄÍ¼Æ¬
+bool replaychoice=0;			//å¤ç›˜æ ‡è®°
+bool first_click=1;				//ç¬¬ä¸€æ¬¡ä¿æŠ¤ç”¨
+float width,height;				//ç½‘æ ¼å®½åº¦	
+int mouse_x,mouse_y;			//ç‚¹ä¸­çš„æ ¼å­çš„åæ ‡
+bool win_or_lose_sound;			//æ§åˆ¶éŸ³æ•ˆ
+IMAGE number1,number2,number3,number4,number5,number6,number7,number8;		//å­˜æ•°å­—ç…§ç‰‡çš„å…«ä¸ªå¯¹è±¡
+IMAGE grid_picture,mark_picture,hole;			//ç½‘æ ¼å›¾ç‰‡ï¼Œæ ‡è®°å›¾ç‰‡ï¼Œæ´
+IMAGE picture_hidden;							//éšæœºèƒŒæ™¯
+int picture_number;				//éšæœºå›¾ç‰‡çš„ç¼–å·
+HCURSOR hcur;					//é¼ æ ‡å…‰æ ‡
+HWND hwnd;						//çª—å£å¥æŸ„
+clock_t time_mark;				//è®¡æ—¶ç”¨
+int duration=0;					//å·²ç”¨æ—¶é•¿
+///////////////////////////////////////////////////////////////////ä¾›è°ƒç”¨å‡½æ•°
+void begineffect();		//å¼€å§‹æ•ˆæœ
+void loadingeffect();//å› ä¸ºéŸ³ä¹å¼€å¤´æœ‰å¤§çº¦4ç§’çš„ç©ºç™½ï¼Œæ‰€ä»¥è¦åŠ ä¸€ä¸ªloading
+int firstmenu();    //åˆè®¿â€”â€”0ï¼Œå½’æ¥â€”â€”1
+void new_user_register();//æ–°ç”¨æˆ·æ³¨å†Œ
+void welcome_back();     //è€ç”¨æˆ·ç™»é™†
+void main_menu();		//ä¸»èœå•
+void seeyoueffect();			//ç»“æŸæ•ˆæœ
+void game();			//æ¸¸æˆå‡½æ•°
+int loadrecord();		//è¯»æ¡£
+bool replayquestion();	//é‡ç©è¯¢é—®
+void scan_map(const int x,const int y);			//å±•å¼€åœ°å›¾çš„é€’å½’å‡½æ•°
+void initialize_field();					//åˆå§‹åŒ–åœ°å›¾
+void showfield();					//è¾“å‡ºåœ°å›¾
+bool win();							//åˆ¤æ–­æ˜¯å¦è·èƒœ
+int suspend();						//æš‚åœ
+void storefield();					//å­˜æ¡£
+void fail_effect();					//å¤±è´¥æ•ˆæœ
+void win_effect();					//æˆåŠŸæ•ˆæœ
+void attribute();					//æ¸¸æˆå±æ€§
+int newgame();						//éš¾åº¦é€‰æ‹©
+bool selfdefine();					//è‡ªå®šä¹‰éš¾åº¦
+void correct_memory();				//å¸®åŠ©ç¡®å®šæ˜¯å¦å·²ç»æœ‰è¿‡è®°å½•
+void picturechoice(int n);			//åŠ è½½é€‰å®šçš„å›¾ç‰‡
 int _tmain(int argc, _TCHAR* argv[])
 {
-//»º³åÒôÀÖ	
-	mciSendString(TEXT("open res\\ÒôÀÖ\\´ò×Ö»úÒôĞ§.mp3 alias beginsong"),NULL,0,NULL);
-	mciSendString(TEXT("open res\\ÒôÀÖ\\Íü¼ÇÊ±¼ä¸ÖÇÙ°æ.mp3 alias menubackground"),NULL,0,NULL);
-	mciSendString(TEXT("open res\\ÒôÀÖ\\ËºÖ½ÒôĞ§.mp3 alias lose_sound_effect"),NULL,0,NULL);
-	mciSendString(TEXT("open res\\ÒôÀÖ\\ÄªÊ§ÄªÍü.mp3 alias lose_sound"),NULL,0,NULL);
-	mciSendString(TEXT("open res\\ÒôÀÖ\\åĞÒ£Ì¾.mp3 alias win_sound"),NULL,0,NULL);
-//¿ªÊ¼
+//ç¼“å†²éŸ³ä¹	
+	mciSendString(TEXT("open res\\éŸ³ä¹\\æ‰“å­—æœºéŸ³æ•ˆ.mp3 alias beginsong"),NULL,0,NULL);
+	mciSendString(TEXT("open res\\éŸ³ä¹\\å¿˜è®°æ—¶é—´é’¢ç´ç‰ˆ.mp3 alias menubackground"),NULL,0,NULL);
+	mciSendString(TEXT("open res\\éŸ³ä¹\\æ’•çº¸éŸ³æ•ˆ.mp3 alias lose_sound_effect"),NULL,0,NULL);
+	mciSendString(TEXT("open res\\éŸ³ä¹\\è«å¤±è«å¿˜.mp3 alias lose_sound"),NULL,0,NULL);
+	mciSendString(TEXT("open res\\éŸ³ä¹\\é€é¥å¹.mp3 alias win_sound"),NULL,0,NULL);
+//å¼€å§‹
 	initgraph(970,630);
-	hcur = LoadCursor(NULL, IDC_ARROW); // ¼ÓÔØÏµÍ³Ô¤ÖÃµÄÊó±êÑùÊ½
-	hwnd = GetHWnd(); // »ñÈ¡»æÍ¼´°¿Ú¾ä±ú
-	SetClassLong(hwnd, GCL_HCURSOR, (long)hcur); // ÉèÖÃ´°¿ÚÀàµÄÊó±êÑùÊ½
+	hcur = LoadCursor(NULL, IDC_ARROW); // åŠ è½½ç³»ç»Ÿé¢„ç½®çš„é¼ æ ‡æ ·å¼
+	hwnd = GetHWnd(); // è·å–ç»˜å›¾çª—å£å¥æŸ„
+	SetClassLong(hwnd, GCL_HCURSOR, (long)hcur); // è®¾ç½®çª—å£ç±»çš„é¼ æ ‡æ ·å¼
 	begineffect();
 	cleardevice();
 	mciSendString(TEXT("play menubackground repeat"),NULL,0,NULL);
 	loadingeffect();
-	bool user_flag=firstmenu();					//»ñµÃÓÃ»§Ãû
+	bool user_flag=firstmenu();					//è·å¾—ç”¨æˆ·å
 	switch (user_flag)
 	{
 		case 0: new_flag=1;new_user_register(); break;
 		case 1: new_flag=0;welcome_back(); break;
-		default:closegraph();cerr<<"³ÌĞò³ö´í£¬ÇëÖØĞÂÔËĞĞ"; break;
+		default:closegraph();cerr<<"ç¨‹åºå‡ºé”™ï¼Œè¯·é‡æ–°è¿è¡Œ"; break;
 	}
 	correct_memory();
 	for(bool play_flag=1;play_flag;)
@@ -111,13 +111,13 @@ void correct_memory()
 	if ((infile.is_open()==0)&&new_flag==0)
 	{
 		new_flag=1;
-		loadimage(NULL,L"res\\Í¼Æ¬\\¿ªÊ¼±³¾°.jpg",970,630,false);
-		TCHAR pity[4][30]={_T("ĞíÊÇÏÈÉúËÄº£ÔÆÓÎ"),_T("Ö±°Ñ´ËµØ×÷ËûÏç"),_T("ÏÈÉúÎ´Ôøµ½¹ı´ËµØ"),_T("³õ´Î¼ûÃæ£¬ÏÈÉúĞÒ»á")};
+		loadimage(NULL,L"res\\å›¾ç‰‡\\å¼€å§‹èƒŒæ™¯.jpg",970,630,false);
+		TCHAR pity[4][30]={_T("è®¸æ˜¯å…ˆç”Ÿå››æµ·äº‘æ¸¸"),_T("ç›´æŠŠæ­¤åœ°ä½œä»–ä¹¡"),_T("å…ˆç”Ÿæœªæ›¾åˆ°è¿‡æ­¤åœ°"),_T("åˆæ¬¡è§é¢ï¼Œå…ˆç”Ÿå¹¸ä¼š")};
 		LOGFONT choice;
-		gettextstyle(&choice);                     // »ñÈ¡µ±Ç°×ÖÌåÉèÖÃ
-		choice.lfHeight = 48;                      // ÉèÖÃ×ÖÌå¸ß¶ÈÎª 48
-		_tcscpy_s(choice.lfFaceName, _T("¿¬Ìå"));    // ÉèÖÃ×ÖÌåÎª¡°¿¬Ìå¡±(¸ß°æ±¾ VC ÍÆ¼öÊ¹ÓÃ _tcscpy_s º¯Êı)
-		choice.lfQuality = ANTIALIASED_QUALITY;    // ÉèÖÃÊä³öĞ§¹ûÎª¿¹¾â³İ  
+		gettextstyle(&choice);                     // è·å–å½“å‰å­—ä½“è®¾ç½®
+		choice.lfHeight = 48;                      // è®¾ç½®å­—ä½“é«˜åº¦ä¸º 48
+		_tcscpy_s(choice.lfFaceName, _T("æ¥·ä½“"));    // è®¾ç½®å­—ä½“ä¸ºâ€œæ¥·ä½“â€(é«˜ç‰ˆæœ¬ VC æ¨èä½¿ç”¨ _tcscpy_s å‡½æ•°)
+		choice.lfQuality = ANTIALIASED_QUALITY;    // è®¾ç½®è¾“å‡ºæ•ˆæœä¸ºæŠ—é”¯é½¿  
 		settextstyle(&choice);  // 
 		setbkmode(TRANSPARENT);
 		settextcolor(BLACK);
@@ -134,13 +134,13 @@ void correct_memory()
 	}else if (infile.is_open()==1&&new_flag==1)
 	{
 		new_flag=0;
-		loadimage(NULL,L"res\\Í¼Æ¬\\¿ªÊ¼±³¾°.jpg",970,630,false);
-		TCHAR pity[4][30]={_T("ĞíÊÇÏÈÉúËÄº£ÔÆÓÎ"),_T("Ö±°ÑËûÏç×÷´ËµØ"),_T("ÏÈÉú¹éÀ´£¬²»¼°Ô¶Ó­"),_T("»¹ÇëÏÈÉú¼ûÁÂ")};
+		loadimage(NULL,L"res\\å›¾ç‰‡\\å¼€å§‹èƒŒæ™¯.jpg",970,630,false);
+		TCHAR pity[4][30]={_T("è®¸æ˜¯å…ˆç”Ÿå››æµ·äº‘æ¸¸"),_T("ç›´æŠŠä»–ä¹¡ä½œæ­¤åœ°"),_T("å…ˆç”Ÿå½’æ¥ï¼Œä¸åŠè¿œè¿"),_T("è¿˜è¯·å…ˆç”Ÿè§è°…")};
 		LOGFONT choice;
-		gettextstyle(&choice);                     // »ñÈ¡µ±Ç°×ÖÌåÉèÖÃ
-		choice.lfHeight = 48;                      // ÉèÖÃ×ÖÌå¸ß¶ÈÎª 48
-		_tcscpy_s(choice.lfFaceName, _T("¿¬Ìå"));    // ÉèÖÃ×ÖÌåÎª¡°¿¬Ìå¡±(¸ß°æ±¾ VC ÍÆ¼öÊ¹ÓÃ _tcscpy_s º¯Êı)
-		choice.lfQuality = ANTIALIASED_QUALITY;    // ÉèÖÃÊä³öĞ§¹ûÎª¿¹¾â³İ  
+		gettextstyle(&choice);                     // è·å–å½“å‰å­—ä½“è®¾ç½®
+		choice.lfHeight = 48;                      // è®¾ç½®å­—ä½“é«˜åº¦ä¸º 48
+		_tcscpy_s(choice.lfFaceName, _T("æ¥·ä½“"));    // è®¾ç½®å­—ä½“ä¸ºâ€œæ¥·ä½“â€(é«˜ç‰ˆæœ¬ VC æ¨èä½¿ç”¨ _tcscpy_s å‡½æ•°)
+		choice.lfQuality = ANTIALIASED_QUALITY;    // è®¾ç½®è¾“å‡ºæ•ˆæœä¸ºæŠ—é”¯é½¿  
 		settextstyle(&choice);  // 
 		setbkmode(TRANSPARENT);
 		settextcolor(BLACK);
@@ -165,7 +165,7 @@ bool replayquestion()
 	IMAGE wholescreen,lineimg[970];
 	if (win_or_lose_sound==0)
 	{
-		loadimage(&wholescreen,L"res\\Í¼Æ¬\\¿ªÊ¼±³¾°.jpg",970,630,false);
+		loadimage(&wholescreen,L"res\\å›¾ç‰‡\\å¼€å§‹èƒŒæ™¯.jpg",970,630,false);
 		SetWorkingImage(&wholescreen);
 		for(int i=0;i<970;i++)
 			getimage(&lineimg[i],i,0,1,630);
@@ -180,14 +180,14 @@ bool replayquestion()
 		Sleep(200);
 	}else
 	{
-		loadimage(NULL,L"res\\Í¼Æ¬\\¿ªÊ¼±³¾°.jpg",970,630,false);
+		loadimage(NULL,L"res\\å›¾ç‰‡\\å¼€å§‹èƒŒæ™¯.jpg",970,630,false);
 	}
-	TCHAR pity[4][30]={_T("ÀÀ¹ı¼Ñ»­Ò»·ù"),_T("²»ÖªÏÈÉú´ËºóÒâÓûÈçºÎ"),_T("Àë¿ªÆ§µØÔÆÓÎËÄ·½"),_T("ÒÖ»òÔÙÁôÏÂÒ»·ù´«ÊÀ¼Ñ×÷")};
+	TCHAR pity[4][30]={_T("è§ˆè¿‡ä½³ç”»ä¸€å¹…"),_T("ä¸çŸ¥å…ˆç”Ÿæ­¤åæ„æ¬²å¦‚ä½•"),_T("ç¦»å¼€åƒ»åœ°äº‘æ¸¸å››æ–¹"),_T("æŠ‘æˆ–å†ç•™ä¸‹ä¸€å¹…ä¼ ä¸–ä½³ä½œ")};
 	LOGFONT choice;
-	gettextstyle(&choice);                     // »ñÈ¡µ±Ç°×ÖÌåÉèÖÃ
-	choice.lfHeight = 48;                      // ÉèÖÃ×ÖÌå¸ß¶ÈÎª 48
-	_tcscpy_s(choice.lfFaceName, _T("¿¬Ìå"));    // ÉèÖÃ×ÖÌåÎª¡°¿¬Ìå¡±(¸ß°æ±¾ VC ÍÆ¼öÊ¹ÓÃ _tcscpy_s º¯Êı)
-	choice.lfQuality = ANTIALIASED_QUALITY;    // ÉèÖÃÊä³öĞ§¹ûÎª¿¹¾â³İ  
+	gettextstyle(&choice);                     // è·å–å½“å‰å­—ä½“è®¾ç½®
+	choice.lfHeight = 48;                      // è®¾ç½®å­—ä½“é«˜åº¦ä¸º 48
+	_tcscpy_s(choice.lfFaceName, _T("æ¥·ä½“"));    // è®¾ç½®å­—ä½“ä¸ºâ€œæ¥·ä½“â€(é«˜ç‰ˆæœ¬ VC æ¨èä½¿ç”¨ _tcscpy_s å‡½æ•°)
+	choice.lfQuality = ANTIALIASED_QUALITY;    // è®¾ç½®è¾“å‡ºæ•ˆæœä¸ºæŠ—é”¯é½¿  
 	settextstyle(&choice);  // 
 	setbkmode(TRANSPARENT);
 	settextcolor(BLACK);
@@ -207,12 +207,12 @@ bool replayquestion()
 		m=GetMouseMsg();
 		if((230<m.x&&m.x<614&&310<m.y&&m.y<358)||(230<m.x&&m.x<758&&390<m.y&&m.y<438))
 		{
-				hcur = LoadCursor(NULL, IDC_HAND); // ¼ÓÔØÏµÍ³Ô¤ÖÃµÄÊó±êÑùÊ½
-				SetClassLong(hwnd, GCL_HCURSOR, (long)hcur); // ÉèÖÃ´°¿ÚÀàµÄÊó±êÑùÊ½
+				hcur = LoadCursor(NULL, IDC_HAND); // åŠ è½½ç³»ç»Ÿé¢„ç½®çš„é¼ æ ‡æ ·å¼
+				SetClassLong(hwnd, GCL_HCURSOR, (long)hcur); // è®¾ç½®çª—å£ç±»çš„é¼ æ ‡æ ·å¼
 		}else
 		{
-				hcur = LoadCursor(NULL, IDC_ARROW); // ¼ÓÔØÏµÍ³Ô¤ÖÃµÄÊó±êÑùÊ½
-				SetClassLong(hwnd, GCL_HCURSOR, (long)hcur); // ÉèÖÃ´°¿ÚÀàµÄÊó±êÑùÊ½
+				hcur = LoadCursor(NULL, IDC_ARROW); // åŠ è½½ç³»ç»Ÿé¢„ç½®çš„é¼ æ ‡æ ·å¼
+				SetClassLong(hwnd, GCL_HCURSOR, (long)hcur); // è®¾ç½®çª—å£ç±»çš„é¼ æ ‡æ ·å¼
 		}
 		switch (m.uMsg)
 		{
@@ -222,24 +222,24 @@ bool replayquestion()
 									mciSendString(TEXT("stop win_sound"),NULL,0,NULL);
 								if(230<m.x&&m.x<614&&310<m.y&&m.y<358)
 								{
-									hcur = LoadCursor(NULL, IDC_ARROW); // ¼ÓÔØÏµÍ³Ô¤ÖÃµÄÊó±êÑùÊ½
-									SetClassLong(hwnd, GCL_HCURSOR, (long)hcur); // ÉèÖÃ´°¿ÚÀàµÄÊó±êÑùÊ½
+									hcur = LoadCursor(NULL, IDC_ARROW); // åŠ è½½ç³»ç»Ÿé¢„ç½®çš„é¼ æ ‡æ ·å¼
+									SetClassLong(hwnd, GCL_HCURSOR, (long)hcur); // è®¾ç½®çª—å£ç±»çš„é¼ æ ‡æ ·å¼
 									return 0;
 								}
 								else if(230<m.x&&m.x<758&&390<m.y&&m.y<438)
 								{
-									hcur = LoadCursor(NULL, IDC_ARROW); // ¼ÓÔØÏµÍ³Ô¤ÖÃµÄÊó±êÑùÊ½
-									SetClassLong(hwnd, GCL_HCURSOR, (long)hcur); // ÉèÖÃ´°¿ÚÀàµÄÊó±êÑùÊ½
+									hcur = LoadCursor(NULL, IDC_ARROW); // åŠ è½½ç³»ç»Ÿé¢„ç½®çš„é¼ æ ‡æ ·å¼
+									SetClassLong(hwnd, GCL_HCURSOR, (long)hcur); // è®¾ç½®çª—å£ç±»çš„é¼ æ ‡æ ·å¼
 									return 1;
 								}
 			default:break;
 		}
 	}
 }
-//////////////////////////////////////////////ÓÎÏ·º¯Êı
+//////////////////////////////////////////////æ¸¸æˆå‡½æ•°
 void game()
 {
-	if(replaychoice)							//¶Áµµ»ò³õÊ¼»¯ÆåÅÌ
+	if(replaychoice)							//è¯»æ¡£æˆ–åˆå§‹åŒ–æ£‹ç›˜
 	{
 		new_flag=0;
 		first_click=0;
@@ -251,7 +251,7 @@ void game()
 		memset(scaned,0,sizeof(scaned));
 		memset(field,0,sizeof(field));
 		memset(mine_number_map,0,sizeof(mine_number_map));
-		for(int i=0;i<column+2;i++)				//³õÊ¼»¯scanedµÄ±ß½çÎª1£¬¼´ÒÑ´ò¿ª
+		for(int i=0;i<column+2;i++)				//åˆå§‹åŒ–scanedçš„è¾¹ç•Œä¸º1ï¼Œå³å·²æ‰“å¼€
 		{
 			scaned[0][i]=1;
 			scaned[row+1][i]=1;
@@ -268,18 +268,18 @@ void game()
 	}
 	width=970.0/column;
 	height=630.0/row;
-	loadimage(&number1,L"res\\Í¼Æ¬\\1.jpg",width,height,true);
-	loadimage(&number2,L"res\\Í¼Æ¬\\2.jpg",width,height,true);
-	loadimage(&number3,L"res\\Í¼Æ¬\\3.jpg",width,height,true);
-	loadimage(&number4,L"res\\Í¼Æ¬\\4.jpg",width,height,true);
-	loadimage(&number5,L"res\\Í¼Æ¬\\5.jpg",width,height,true);
-	loadimage(&number6,L"res\\Í¼Æ¬\\6.jpg",width,height,true);
-	loadimage(&number7,L"res\\Í¼Æ¬\\7.jpg",width,height,true);
-	loadimage(&number8,L"res\\Í¼Æ¬\\8.jpg",width,height,true);
-	loadimage(&grid_picture,L"res\\Í¼Æ¬\\Çà»¨´É.jpg",width,height,true);
-	loadimage(&mark_picture,L"res\\Í¼Æ¬\\Ã·»¨.jpg",width,height,true);
-	loadimage(&hole,L"res\\Í¼Æ¬\\¶´.gif",width,height,true);
-	time_mark=clock();				//¼ÆÊ±ÓÃ
+	loadimage(&number1,L"res\\å›¾ç‰‡\\1.jpg",width,height,true);
+	loadimage(&number2,L"res\\å›¾ç‰‡\\2.jpg",width,height,true);
+	loadimage(&number3,L"res\\å›¾ç‰‡\\3.jpg",width,height,true);
+	loadimage(&number4,L"res\\å›¾ç‰‡\\4.jpg",width,height,true);
+	loadimage(&number5,L"res\\å›¾ç‰‡\\5.jpg",width,height,true);
+	loadimage(&number6,L"res\\å›¾ç‰‡\\6.jpg",width,height,true);
+	loadimage(&number7,L"res\\å›¾ç‰‡\\7.jpg",width,height,true);
+	loadimage(&number8,L"res\\å›¾ç‰‡\\8.jpg",width,height,true);
+	loadimage(&grid_picture,L"res\\å›¾ç‰‡\\é’èŠ±ç“·.jpg",width,height,true);
+	loadimage(&mark_picture,L"res\\å›¾ç‰‡\\æ¢…èŠ±.jpg",width,height,true);
+	loadimage(&hole,L"res\\å›¾ç‰‡\\æ´.gif",width,height,true);
+	time_mark=clock();				//è®¡æ—¶ç”¨
 //	duration=0;
 	showfield();
 	MOUSEMSG m;
@@ -330,26 +330,26 @@ void picturechoice(int n)
 {
 	switch (n)
 	{
-		case  0:loadimage(&picture_hidden,L"res\\Ëæ»ú±³¾°\\00.jpg",970,630,false);break;
-		case  1:loadimage(&picture_hidden,L"res\\Ëæ»ú±³¾°\\01.jpg",970,630,false);break;
-		case  2:loadimage(&picture_hidden,L"res\\Ëæ»ú±³¾°\\02.jpg",970,630,false);break;
-		case  3:loadimage(&picture_hidden,L"res\\Ëæ»ú±³¾°\\03.jpg",970,630,false);break;
-		case  4:loadimage(&picture_hidden,L"res\\Ëæ»ú±³¾°\\04.jpg",970,630,false);break;
-		case  5:loadimage(&picture_hidden,L"res\\Ëæ»ú±³¾°\\05.jpg",970,630,false);break;
-		case  6:loadimage(&picture_hidden,L"res\\Ëæ»ú±³¾°\\06.jpg",970,630,false);break;
-		case  7:loadimage(&picture_hidden,L"res\\Ëæ»ú±³¾°\\07.jpg",970,630,false);break;
-		case  8:loadimage(&picture_hidden,L"res\\Ëæ»ú±³¾°\\08.jpg",970,630,false);break;
-		case  9:loadimage(&picture_hidden,L"res\\Ëæ»ú±³¾°\\09.jpg",970,630,false);break;
-		case 10:loadimage(&picture_hidden,L"res\\Ëæ»ú±³¾°\\10.jpg",970,630,false);break;
-		case 11:loadimage(&picture_hidden,L"res\\Ëæ»ú±³¾°\\11.jpg",970,630,false);break;
-		case 12:loadimage(&picture_hidden,L"res\\Ëæ»ú±³¾°\\12.jpg",970,630,false);break;
-		case 13:loadimage(&picture_hidden,L"res\\Ëæ»ú±³¾°\\13.jpg",970,630,false);break;
-		case 14:loadimage(&picture_hidden,L"res\\Ëæ»ú±³¾°\\14.jpg",970,630,false);break;
-		case 15:loadimage(&picture_hidden,L"res\\Ëæ»ú±³¾°\\15.jpg",970,630,false);break;
-		case 16:loadimage(&picture_hidden,L"res\\Ëæ»ú±³¾°\\16.jpg",970,630,false);break;
-		case 17:loadimage(&picture_hidden,L"res\\Ëæ»ú±³¾°\\17.jpg",970,630,false);break;
-		case 18:loadimage(&picture_hidden,L"res\\Ëæ»ú±³¾°\\18.jpg",970,630,false);break;
-		case 19:loadimage(&picture_hidden,L"res\\Ëæ»ú±³¾°\\19.jpg",970,630,false);break;
+		case  0:loadimage(&picture_hidden,L"res\\éšæœºèƒŒæ™¯\\00.jpg",970,630,false);break;
+		case  1:loadimage(&picture_hidden,L"res\\éšæœºèƒŒæ™¯\\01.jpg",970,630,false);break;
+		case  2:loadimage(&picture_hidden,L"res\\éšæœºèƒŒæ™¯\\02.jpg",970,630,false);break;
+		case  3:loadimage(&picture_hidden,L"res\\éšæœºèƒŒæ™¯\\03.jpg",970,630,false);break;
+		case  4:loadimage(&picture_hidden,L"res\\éšæœºèƒŒæ™¯\\04.jpg",970,630,false);break;
+		case  5:loadimage(&picture_hidden,L"res\\éšæœºèƒŒæ™¯\\05.jpg",970,630,false);break;
+		case  6:loadimage(&picture_hidden,L"res\\éšæœºèƒŒæ™¯\\06.jpg",970,630,false);break;
+		case  7:loadimage(&picture_hidden,L"res\\éšæœºèƒŒæ™¯\\07.jpg",970,630,false);break;
+		case  8:loadimage(&picture_hidden,L"res\\éšæœºèƒŒæ™¯\\08.jpg",970,630,false);break;
+		case  9:loadimage(&picture_hidden,L"res\\éšæœºèƒŒæ™¯\\09.jpg",970,630,false);break;
+		case 10:loadimage(&picture_hidden,L"res\\éšæœºèƒŒæ™¯\\10.jpg",970,630,false);break;
+		case 11:loadimage(&picture_hidden,L"res\\éšæœºèƒŒæ™¯\\11.jpg",970,630,false);break;
+		case 12:loadimage(&picture_hidden,L"res\\éšæœºèƒŒæ™¯\\12.jpg",970,630,false);break;
+		case 13:loadimage(&picture_hidden,L"res\\éšæœºèƒŒæ™¯\\13.jpg",970,630,false);break;
+		case 14:loadimage(&picture_hidden,L"res\\éšæœºèƒŒæ™¯\\14.jpg",970,630,false);break;
+		case 15:loadimage(&picture_hidden,L"res\\éšæœºèƒŒæ™¯\\15.jpg",970,630,false);break;
+		case 16:loadimage(&picture_hidden,L"res\\éšæœºèƒŒæ™¯\\16.jpg",970,630,false);break;
+		case 17:loadimage(&picture_hidden,L"res\\éšæœºèƒŒæ™¯\\17.jpg",970,630,false);break;
+		case 18:loadimage(&picture_hidden,L"res\\éšæœºèƒŒæ™¯\\18.jpg",970,630,false);break;
+		case 19:loadimage(&picture_hidden,L"res\\éšæœºèƒŒæ™¯\\19.jpg",970,630,false);break;
 		default:break;
 	}
 }
@@ -362,10 +362,10 @@ int suspend()
 		buf[i]=RGBtoGRAY(buf[i]);
 	IMAGE choicehead(50,50),choiceframe(210,60);
 	LOGFONT choice;
-	gettextstyle(&choice);                     // »ñÈ¡µ±Ç°×ÖÌåÉèÖÃ
-	choice.lfHeight = 48;                      // ÉèÖÃ×ÖÌå¸ß¶ÈÎª 48
-	_tcscpy_s(choice.lfFaceName, _T("»ªÎÄĞÂÎº"));    // ÉèÖÃ×ÖÌåÎª¡°»ªÎÄĞÂÎº¡±(¸ß°æ±¾ VC ÍÆ¼öÊ¹ÓÃ _tcscpy_s º¯Êı)
-	choice.lfQuality = ANTIALIASED_QUALITY;    // ÉèÖÃÊä³öĞ§¹ûÎª¿¹¾â³İ  
+	gettextstyle(&choice);                     // è·å–å½“å‰å­—ä½“è®¾ç½®
+	choice.lfHeight = 48;                      // è®¾ç½®å­—ä½“é«˜åº¦ä¸º 48
+	_tcscpy_s(choice.lfFaceName, _T("åæ–‡æ–°é­"));    // è®¾ç½®å­—ä½“ä¸ºâ€œåæ–‡æ–°é­â€(é«˜ç‰ˆæœ¬ VC æ¨èä½¿ç”¨ _tcscpy_s å‡½æ•°)
+	choice.lfQuality = ANTIALIASED_QUALITY;    // è®¾ç½®è¾“å‡ºæ•ˆæœä¸ºæŠ—é”¯é½¿  
 	settextstyle(&choice);  // 
 	setbkmode(TRANSPARENT);
 	settextcolor(HSLtoRGB(120,1,0.5));
@@ -377,23 +377,23 @@ int suspend()
 	for(;itoatime[i]!='\0';i++)
 		ctottime[i]=itoatime[i];
 	putimage(0,0,&wholescreen,SRCCOPY);
-	outtextxy(200,200,L"Î´Óê³ñçÑ£¬Ôİ´æ´Ë»­");
-	outtextxy(200,300,L"¸é±Ê");
-	outtextxy(200,400,L"ÏÈÉúÒÑ·ü°¸");
+	outtextxy(200,200,L"æœªé›¨ç»¸ç¼ªï¼Œæš‚å­˜æ­¤ç”»");
+	outtextxy(200,300,L"æç¬”");
+	outtextxy(200,400,L"å…ˆç”Ÿå·²ä¼æ¡ˆ");
 	outtextxy(440,400,ctottime);
-	outtextxy(545,400,L"Ãë");
+	outtextxy(545,400,L"ç§’");
 	FlushMouseMsgBuffer();
 	while (true)
 	{
 		m=GetMouseMsg();
 		if((200<m.x&&m.x<632&&200<m.y&&m.y<250)||(200<m.x&&m.x<<296&&300<m.y&&m.y<350))
 		{
-			hcur = LoadCursor(NULL, IDC_HAND); // ¼ÓÔØÏµÍ³Ô¤ÖÃµÄÊó±êÑùÊ½
-			SetClassLong(hwnd, GCL_HCURSOR, (long)hcur); // ÉèÖÃ´°¿ÚÀàµÄÊó±êÑùÊ½
+			hcur = LoadCursor(NULL, IDC_HAND); // åŠ è½½ç³»ç»Ÿé¢„ç½®çš„é¼ æ ‡æ ·å¼
+			SetClassLong(hwnd, GCL_HCURSOR, (long)hcur); // è®¾ç½®çª—å£ç±»çš„é¼ æ ‡æ ·å¼
 		}else
 		{
-			hcur = LoadCursor(NULL, IDC_ARROW); // ¼ÓÔØÏµÍ³Ô¤ÖÃµÄÊó±êÑùÊ½
-			SetClassLong(hwnd, GCL_HCURSOR, (long)hcur); // ÉèÖÃ´°¿ÚÀàµÄÊó±êÑùÊ½
+			hcur = LoadCursor(NULL, IDC_ARROW); // åŠ è½½ç³»ç»Ÿé¢„ç½®çš„é¼ æ ‡æ ·å¼
+			SetClassLong(hwnd, GCL_HCURSOR, (long)hcur); // è®¾ç½®çª—å£ç±»çš„é¼ æ ‡æ ·å¼
 		}
 		switch (m.uMsg)
 		{
@@ -401,40 +401,40 @@ int suspend()
 								{
 									storefield();
 									showfield();
-									hcur = LoadCursor(NULL, IDC_ARROW); // ¼ÓÔØÏµÍ³Ô¤ÖÃµÄÊó±êÑùÊ½
-									SetClassLong(hwnd, GCL_HCURSOR, (long)hcur); // ÉèÖÃ´°¿ÚÀàµÄÊó±êÑùÊ½
+									hcur = LoadCursor(NULL, IDC_ARROW); // åŠ è½½ç³»ç»Ÿé¢„ç½®çš„é¼ æ ‡æ ·å¼
+									SetClassLong(hwnd, GCL_HCURSOR, (long)hcur); // è®¾ç½®çª—å£ç±»çš„é¼ æ ‡æ ·å¼
 									return 1;
 								}else if (200<m.x&&m.x<<296&&300<m.y&&m.y<350)
 								{
 									putimage(0,0,&wholescreen,SRCCOPY);
-									outtextxy(200,200,L"ÏÈÉúÔÚ´Ë¸é±Ê");
-									outtextxy(200,300,L"ÊÇÓûÁô´ıËûÈÕ");
-									outtextxy(200,400,L"ÒÖ»ò¾Í´Ë³¾·â");
+									outtextxy(200,200,L"å…ˆç”Ÿåœ¨æ­¤æç¬”");
+									outtextxy(200,300,L"æ˜¯æ¬²ç•™å¾…ä»–æ—¥");
+									outtextxy(200,400,L"æŠ‘æˆ–å°±æ­¤å°˜å°");
 									FlushMouseMsgBuffer();
 									while(true)
 									{
 										m=GetMouseMsg();
 										if((200<m.x&&m.x<488&&300<m.y&&m.y<350)||(200<m.x&&m.x<488&&400<m.y&&m.y<450))
 										{
-											hcur = LoadCursor(NULL, IDC_HAND); // ¼ÓÔØÏµÍ³Ô¤ÖÃµÄÊó±êÑùÊ½
-											SetClassLong(hwnd, GCL_HCURSOR, (long)hcur); // ÉèÖÃ´°¿ÚÀàµÄÊó±êÑùÊ½
+											hcur = LoadCursor(NULL, IDC_HAND); // åŠ è½½ç³»ç»Ÿé¢„ç½®çš„é¼ æ ‡æ ·å¼
+											SetClassLong(hwnd, GCL_HCURSOR, (long)hcur); // è®¾ç½®çª—å£ç±»çš„é¼ æ ‡æ ·å¼
 										}else
 										{
-											hcur = LoadCursor(NULL, IDC_ARROW); // ¼ÓÔØÏµÍ³Ô¤ÖÃµÄÊó±êÑùÊ½
-											SetClassLong(hwnd, GCL_HCURSOR, (long)hcur); // ÉèÖÃ´°¿ÚÀàµÄÊó±êÑùÊ½
+											hcur = LoadCursor(NULL, IDC_ARROW); // åŠ è½½ç³»ç»Ÿé¢„ç½®çš„é¼ æ ‡æ ·å¼
+											SetClassLong(hwnd, GCL_HCURSOR, (long)hcur); // è®¾ç½®çª—å£ç±»çš„é¼ æ ‡æ ·å¼
 										}
 										if(m.uMsg==WM_LBUTTONDOWN)
 										{
 											if (200<m.x&&m.x<488&&300<m.y&&m.y<350)
 											{
 												storefield();
-												hcur = LoadCursor(NULL, IDC_ARROW); // ¼ÓÔØÏµÍ³Ô¤ÖÃµÄÊó±êÑùÊ½
-												SetClassLong(hwnd, GCL_HCURSOR, (long)hcur); // ÉèÖÃ´°¿ÚÀàµÄÊó±êÑùÊ½
+												hcur = LoadCursor(NULL, IDC_ARROW); // åŠ è½½ç³»ç»Ÿé¢„ç½®çš„é¼ æ ‡æ ·å¼
+												SetClassLong(hwnd, GCL_HCURSOR, (long)hcur); // è®¾ç½®çª—å£ç±»çš„é¼ æ ‡æ ·å¼
 												return 0;
 											}else if(200<m.x&&m.x<488&&400<m.y&&m.y<450)
 											{
-												hcur = LoadCursor(NULL, IDC_ARROW); // ¼ÓÔØÏµÍ³Ô¤ÖÃµÄÊó±êÑùÊ½
-												SetClassLong(hwnd, GCL_HCURSOR, (long)hcur); // ÉèÖÃ´°¿ÚÀàµÄÊó±êÑùÊ½
+												hcur = LoadCursor(NULL, IDC_ARROW); // åŠ è½½ç³»ç»Ÿé¢„ç½®çš„é¼ æ ‡æ ·å¼
+												SetClassLong(hwnd, GCL_HCURSOR, (long)hcur); // è®¾ç½®çª—å£ç±»çš„é¼ æ ‡æ ·å¼
 												return 0;
 											}
 										}
@@ -442,8 +442,8 @@ int suspend()
 								}
 								break;
 			case WM_RBUTTONDBLCLK:showfield();
-								hcur = LoadCursor(NULL, IDC_ARROW); // ¼ÓÔØÏµÍ³Ô¤ÖÃµÄÊó±êÑùÊ½
-								SetClassLong(hwnd, GCL_HCURSOR, (long)hcur); // ÉèÖÃ´°¿ÚÀàµÄÊó±êÑùÊ½
+								hcur = LoadCursor(NULL, IDC_ARROW); // åŠ è½½ç³»ç»Ÿé¢„ç½®çš„é¼ æ ‡æ ·å¼
+								SetClassLong(hwnd, GCL_HCURSOR, (long)hcur); // è®¾ç½®çª—å£ç±»çš„é¼ æ ‡æ ·å¼
 								return 1 ;break;
 			default:break;
 		}
@@ -454,7 +454,7 @@ void storefield()
 	ofstream outfile(user_name);;
 	outfile<<row<<" "<<column<<" "<<mine_number<<" "<<first_click<<" "<<picture_number<<" "<<duration<<endl;
 	outfile<<endl;
-	for(int i=0;i<52;i++)						//´æfield
+	for(int i=0;i<52;i++)						//å­˜field
 	{
 		for (int j = 0; j < 52; j++)
 		{
@@ -463,7 +463,7 @@ void storefield()
 		outfile<<endl;
 	}
 	outfile<<endl;
-	for (int i = 0; i < 52; i++)				//´æscaned
+	for (int i = 0; i < 52; i++)				//å­˜scaned
 	{
 		for (int j = 0; j < 52; j++)
 		{
@@ -472,7 +472,7 @@ void storefield()
 		outfile<<endl;
 	}
 	outfile<<endl;
-	for (int i = 0; i < 50; i++)				//´æmine_number_map
+	for (int i = 0; i < 50; i++)				//å­˜mine_number_map
 	{
 		for (int j = 0; j < 50; j++)
 		{
@@ -511,12 +511,12 @@ void win_effect()
 {
 	mciSendString(TEXT("pause menubackground"),NULL,0,NULL);
 	mciSendString(TEXT("play win_sound repeat"),NULL,0,NULL);
-	TCHAR pity[3][30]={_T("¹§ºØÏÈÉú£¬ÓÖµÃÒ»¼Ñ»­"),_T("ÏÈÉúÕæÄËÌìÉúÃîÊÖ"),_T("ÍíÉúÅå·ş")};
+	TCHAR pity[3][30]={_T("æ­è´ºå…ˆç”Ÿï¼Œåˆå¾—ä¸€ä½³ç”»"),_T("å…ˆç”ŸçœŸä¹ƒå¤©ç”Ÿå¦™æ‰‹"),_T("æ™šç”Ÿä½©æœ")};
 	LOGFONT choice;
-	gettextstyle(&choice);                     // »ñÈ¡µ±Ç°×ÖÌåÉèÖÃ
-	choice.lfHeight = 48;                      // ÉèÖÃ×ÖÌå¸ß¶ÈÎª 48
-	_tcscpy_s(choice.lfFaceName, _T("¿¬Ìå"));    // ÉèÖÃ×ÖÌåÎª¡°¿¬Ìå¡±(¸ß°æ±¾ VC ÍÆ¼öÊ¹ÓÃ _tcscpy_s º¯Êı)
-	choice.lfQuality = ANTIALIASED_QUALITY;    // ÉèÖÃÊä³öĞ§¹ûÎª¿¹¾â³İ  
+	gettextstyle(&choice);                     // è·å–å½“å‰å­—ä½“è®¾ç½®
+	choice.lfHeight = 48;                      // è®¾ç½®å­—ä½“é«˜åº¦ä¸º 48
+	_tcscpy_s(choice.lfFaceName, _T("æ¥·ä½“"));    // è®¾ç½®å­—ä½“ä¸ºâ€œæ¥·ä½“â€(é«˜ç‰ˆæœ¬ VC æ¨èä½¿ç”¨ _tcscpy_s å‡½æ•°)
+	choice.lfQuality = ANTIALIASED_QUALITY;    // è®¾ç½®è¾“å‡ºæ•ˆæœä¸ºæŠ—é”¯é½¿  
 	settextstyle(&choice);  // 
 	setbkmode(TRANSPARENT);
 	settextcolor(BLACK);
@@ -544,7 +544,7 @@ void win_effect()
 	cleardevice();
 	Sleep(1);
 	IMAGE bk;
-	loadimage(&bk,L"res\\Í¼Æ¬\\¿ªÊ¼±³¾°.jpg",970,630,false);
+	loadimage(&bk,L"res\\å›¾ç‰‡\\å¼€å§‹èƒŒæ™¯.jpg",970,630,false);
 	putimage(0,0,&picture_hidden,SRCCOPY);
 	MOUSEMSG m;
 	do
@@ -569,7 +569,7 @@ void fail_effect()
 	mciSendString(TEXT("seek lose_sound to start"),NULL,0,NULL);
 	mciSendString(TEXT("play lose_sound repeat"),NULL,0,NULL);
 	IMAGE hole;
-	loadimage(&hole,L"res\\Í¼Æ¬\\¶´.gif",width,height);
+	loadimage(&hole,L"res\\å›¾ç‰‡\\æ´.gif",width,height);
 	for(int i=0;i<row;i++)
 		for(int j=0;j<column;j++)
 		{
@@ -596,12 +596,12 @@ void fail_effect()
 		line(i,0,i,630);
 		Sleep(2);
 	}
-	TCHAR pity[3][30]={_T("¿ÉÏ§£¡¿ÉÌ¾£¡"),_T("ÏÈÉúÒ»Ê±Êèºö"),_T("»ÙÁËÒ»·ùºÃ»­")};
+	TCHAR pity[3][30]={_T("å¯æƒœï¼å¯å¹ï¼"),_T("å…ˆç”Ÿä¸€æ—¶ç–å¿½"),_T("æ¯äº†ä¸€å¹…å¥½ç”»")};
 	LOGFONT choice;
-	gettextstyle(&choice);                     // »ñÈ¡µ±Ç°×ÖÌåÉèÖÃ
-	choice.lfHeight = 48;						// ÉèÖÃ×ÖÌå¸ß¶ÈÎª 48
-	_tcscpy_s(choice.lfFaceName, _T("¿¬Ìå"));    // ÉèÖÃ×ÖÌåÎª¡°¿¬Ìå¡±(¸ß°æ±¾ VC ÍÆ¼öÊ¹ÓÃ _tcscpy_s º¯Êı)
-	choice.lfQuality = ANTIALIASED_QUALITY;    // ÉèÖÃÊä³öĞ§¹ûÎª¿¹¾â³İ  
+	gettextstyle(&choice);                     // è·å–å½“å‰å­—ä½“è®¾ç½®
+	choice.lfHeight = 48;						// è®¾ç½®å­—ä½“é«˜åº¦ä¸º 48
+	_tcscpy_s(choice.lfFaceName, _T("æ¥·ä½“"));    // è®¾ç½®å­—ä½“ä¸ºâ€œæ¥·ä½“â€(é«˜ç‰ˆæœ¬ VC æ¨èä½¿ç”¨ _tcscpy_s å‡½æ•°)
+	choice.lfQuality = ANTIALIASED_QUALITY;    // è®¾ç½®è¾“å‡ºæ•ˆæœä¸ºæŠ—é”¯é½¿  
 	settextstyle(&choice);  // 
 	setbkmode(TRANSPARENT);
 	settextcolor(WHITE);
@@ -669,7 +669,7 @@ void initialize_field()
 		for(int j=0;j<column;j++)
 		{
 			if(field[i+1][j+1]==1)
-				mine_number_map[i][j]=-1;				//µØÍ¼Ó³ÉäÉÏ-1±íÊ¾ÓĞÀ×
+				mine_number_map[i][j]=-1;				//åœ°å›¾æ˜ å°„ä¸Š-1è¡¨ç¤ºæœ‰é›·
 			else
 			{
 				mine_number_map[i][j]=field[i][j+1]+field[i+2][j+1]+field[i+1][j]+field[i+1][j+2];
@@ -724,16 +724,16 @@ void showfield()
 		}
 	EndBatchDraw();
 }
-////////////////////////////////////////////////////////////////////////²Ëµ¥º¯ÊıºÍ¿ªÊ¼½áÊøĞ§¹ûº¯Êı
+////////////////////////////////////////////////////////////////////////èœå•å‡½æ•°å’Œå¼€å§‹ç»“æŸæ•ˆæœå‡½æ•°
 void seeyoueffect()
 {
-	loadimage(NULL,L"res\\Í¼Æ¬\\¿ªÊ¼±³¾°.jpg",970,630,false);
-	TCHAR saybye[3][30]={_T("ÏÈÉú´Ë´ÎÔÆÓÎ"),_T("ÓÖ²»Öª¼¸Ê±µÃ¹é"),_T("¾Í´Ë±ğ¹ı£¬ÏÈÉú×ßºÃ")};
+	loadimage(NULL,L"res\\å›¾ç‰‡\\å¼€å§‹èƒŒæ™¯.jpg",970,630,false);
+	TCHAR saybye[3][30]={_T("å…ˆç”Ÿæ­¤æ¬¡äº‘æ¸¸"),_T("åˆä¸çŸ¥å‡ æ—¶å¾—å½’"),_T("å°±æ­¤åˆ«è¿‡ï¼Œå…ˆç”Ÿèµ°å¥½")};
 	LOGFONT choice;
-	gettextstyle(&choice);                     // »ñÈ¡µ±Ç°×ÖÌåÉèÖÃ
-	choice.lfHeight = 48;                      // ÉèÖÃ×ÖÌå¸ß¶ÈÎª 48
-	_tcscpy_s(choice.lfFaceName, _T("¿¬Ìå"));    // ÉèÖÃ×ÖÌåÎª¡°¿¬Ìå¡±(¸ß°æ±¾ VC ÍÆ¼öÊ¹ÓÃ _tcscpy_s º¯Êı)
-	choice.lfQuality = ANTIALIASED_QUALITY;    // ÉèÖÃÊä³öĞ§¹ûÎª¿¹¾â³İ  
+	gettextstyle(&choice);                     // è·å–å½“å‰å­—ä½“è®¾ç½®
+	choice.lfHeight = 48;                      // è®¾ç½®å­—ä½“é«˜åº¦ä¸º 48
+	_tcscpy_s(choice.lfFaceName, _T("æ¥·ä½“"));    // è®¾ç½®å­—ä½“ä¸ºâ€œæ¥·ä½“â€(é«˜ç‰ˆæœ¬ VC æ¨èä½¿ç”¨ _tcscpy_s å‡½æ•°)
+	choice.lfQuality = ANTIALIASED_QUALITY;    // è®¾ç½®è¾“å‡ºæ•ˆæœä¸ºæŠ—é”¯é½¿  
 	settextstyle(&choice);  // 
 	setbkmode(TRANSPARENT);
 	settextcolor(BLACK);
@@ -758,13 +758,13 @@ void seeyoueffect()
 }
 void welcome_back()
 {
-	loadimage(NULL,L"res\\Í¼Æ¬\\¿ªÊ¼±³¾°.jpg",970,630,false);
-	TCHAR greet[3][30]={_T("ÏÈÉúÔ¶ÓÎ¹éÀ´£¬²»¼°ÏàÓ­"),_T("ÏÈÉú´ËÀ´ÒËÏÈÁôÃûºÅ£¬"),_T("ÒÔÃâÃû»­ÎŞÖ÷")};
+	loadimage(NULL,L"res\\å›¾ç‰‡\\å¼€å§‹èƒŒæ™¯.jpg",970,630,false);
+	TCHAR greet[3][30]={_T("å…ˆç”Ÿè¿œæ¸¸å½’æ¥ï¼Œä¸åŠç›¸è¿"),_T("å…ˆç”Ÿæ­¤æ¥å®œå…ˆç•™åå·ï¼Œ"),_T("ä»¥å…åç”»æ— ä¸»")};
 	LOGFONT choice;
-	gettextstyle(&choice);                     // »ñÈ¡µ±Ç°×ÖÌåÉèÖÃ
-	choice.lfHeight = 48;                      // ÉèÖÃ×ÖÌå¸ß¶ÈÎª 48
-	_tcscpy_s(choice.lfFaceName, _T("¿¬Ìå"));    // ÉèÖÃ×ÖÌåÎª¡°¿¬Ìå¡±(¸ß°æ±¾ VC ÍÆ¼öÊ¹ÓÃ _tcscpy_s º¯Êı)
-	choice.lfQuality = ANTIALIASED_QUALITY;    // ÉèÖÃÊä³öĞ§¹ûÎª¿¹¾â³İ  
+	gettextstyle(&choice);                     // è·å–å½“å‰å­—ä½“è®¾ç½®
+	choice.lfHeight = 48;                      // è®¾ç½®å­—ä½“é«˜åº¦ä¸º 48
+	_tcscpy_s(choice.lfFaceName, _T("æ¥·ä½“"));    // è®¾ç½®å­—ä½“ä¸ºâ€œæ¥·ä½“â€(é«˜ç‰ˆæœ¬ VC æ¨èä½¿ç”¨ _tcscpy_s å‡½æ•°)
+	choice.lfQuality = ANTIALIASED_QUALITY;    // è®¾ç½®è¾“å‡ºæ•ˆæœä¸ºæŠ—é”¯é½¿  
 	settextstyle(&choice);  // 
 	setbkmode(TRANSPARENT);
 	settextcolor(BLACK);
@@ -778,7 +778,7 @@ void welcome_back()
 		}
 	}
 	IMAGE choiceframe(400,60);
-	loadimage(&choiceframe,L"res\\Í¼Æ¬\\Ñ¡Ïî¿¨µ×.jpg",400,60,false);
+	loadimage(&choiceframe,L"res\\å›¾ç‰‡\\é€‰é¡¹å¡åº•.jpg",400,60,false);
 	putimage(200,350,&choiceframe,SRCAND);
 	IMAGE temporary_image;
 	getimage(&temporary_image,235,320,615,50);
@@ -819,13 +819,13 @@ void welcome_back()
 }
 void new_user_register()
 {
-	loadimage(NULL,L"res\\Í¼Æ¬\\¿ªÊ¼±³¾°.jpg",970,630,false);
-	TCHAR greet[2][30]={_T("ÏÈÉúÔ¶À´£¬²»¼°ÏàÓ­"),_T("¸ÒÎÊÏÈÉú·¼Ãû")};
+	loadimage(NULL,L"res\\å›¾ç‰‡\\å¼€å§‹èƒŒæ™¯.jpg",970,630,false);
+	TCHAR greet[2][30]={_T("å…ˆç”Ÿè¿œæ¥ï¼Œä¸åŠç›¸è¿"),_T("æ•¢é—®å…ˆç”ŸèŠ³å")};
 	LOGFONT choice;
-	gettextstyle(&choice);                     // »ñÈ¡µ±Ç°×ÖÌåÉèÖÃ
-	choice.lfHeight = 48;                      // ÉèÖÃ×ÖÌå¸ß¶ÈÎª 48
-	_tcscpy_s(choice.lfFaceName, _T("¿¬Ìå"));    // ÉèÖÃ×ÖÌåÎª¡°¿¬Ìå¡±(¸ß°æ±¾ VC ÍÆ¼öÊ¹ÓÃ _tcscpy_s º¯Êı)
-	choice.lfQuality = ANTIALIASED_QUALITY;    // ÉèÖÃÊä³öĞ§¹ûÎª¿¹¾â³İ  
+	gettextstyle(&choice);                     // è·å–å½“å‰å­—ä½“è®¾ç½®
+	choice.lfHeight = 48;                      // è®¾ç½®å­—ä½“é«˜åº¦ä¸º 48
+	_tcscpy_s(choice.lfFaceName, _T("æ¥·ä½“"));    // è®¾ç½®å­—ä½“ä¸ºâ€œæ¥·ä½“â€(é«˜ç‰ˆæœ¬ VC æ¨èä½¿ç”¨ _tcscpy_s å‡½æ•°)
+	choice.lfQuality = ANTIALIASED_QUALITY;    // è®¾ç½®è¾“å‡ºæ•ˆæœä¸ºæŠ—é”¯é½¿  
 	settextstyle(&choice);  // 
 	setbkmode(TRANSPARENT);
 	settextcolor(BLACK);
@@ -839,7 +839,7 @@ void new_user_register()
 		}
 	}
 	IMAGE choiceframe(400,60);
-	loadimage(&choiceframe,L"res\\Í¼Æ¬\\Ñ¡Ïî¿¨µ×.jpg",400,60,false);
+	loadimage(&choiceframe,L"res\\å›¾ç‰‡\\é€‰é¡¹å¡åº•.jpg",400,60,false);
 	putimage(200,300,&choiceframe,SRCAND);
 	IMAGE temporary_image;
 	getimage(&temporary_image,235,270,615,50);
@@ -881,9 +881,9 @@ void new_user_register()
 void main_menu()
 {
 	IMAGE choicehead(50,50),choiceframe(210,60);
-	loadimage(NULL,L"res\\Í¼Æ¬\\¿ªÊ¼±³¾°.jpg",970,630,false);
-	loadimage(&choicehead,L"res\\Í¼Æ¬\\Ñ¡ÏîÍ·Í¼Æ¬.jpg",50,50,false);
-	loadimage(&choiceframe,L"res\\Í¼Æ¬\\Ñ¡Ïî¿¨µ×.jpg",210,60,false);
+	loadimage(NULL,L"res\\å›¾ç‰‡\\å¼€å§‹èƒŒæ™¯.jpg",970,630,false);
+	loadimage(&choicehead,L"res\\å›¾ç‰‡\\é€‰é¡¹å¤´å›¾ç‰‡.jpg",50,50,false);
+	loadimage(&choiceframe,L"res\\å›¾ç‰‡\\é€‰é¡¹å¡åº•.jpg",210,60,false);
 	putimage(200,210,&choicehead,SRCAND);
 	putimage(110,300,&choicehead,SRCAND);
 	putimage(50,400,&choicehead,SRCAND);
@@ -891,34 +891,34 @@ void main_menu()
 	putimage(160,310,&choiceframe,SRCAND);
 	putimage(100,410,&choiceframe,SRCAND);
 	LOGFONT choice;
-	gettextstyle(&choice);                     // »ñÈ¡µ±Ç°×ÖÌåÉèÖÃ
-	choice.lfHeight = 48;                      // ÉèÖÃ×ÖÌå¸ß¶ÈÎª 48
-	_tcscpy_s(choice.lfFaceName, _T("¿¬Ìå"));    // ÉèÖÃ×ÖÌåÎª¡°¿¬Ìå¡±(¸ß°æ±¾ VC ÍÆ¼öÊ¹ÓÃ _tcscpy_s º¯Êı)
-	choice.lfQuality = ANTIALIASED_QUALITY;    // ÉèÖÃÊä³öĞ§¹ûÎª¿¹¾â³İ  
+	gettextstyle(&choice);                     // è·å–å½“å‰å­—ä½“è®¾ç½®
+	choice.lfHeight = 48;                      // è®¾ç½®å­—ä½“é«˜åº¦ä¸º 48
+	_tcscpy_s(choice.lfFaceName, _T("æ¥·ä½“"));    // è®¾ç½®å­—ä½“ä¸ºâ€œæ¥·ä½“â€(é«˜ç‰ˆæœ¬ VC æ¨èä½¿ç”¨ _tcscpy_s å‡½æ•°)
+	choice.lfQuality = ANTIALIASED_QUALITY;    // è®¾ç½®è¾“å‡ºæ•ˆæœä¸ºæŠ—é”¯é½¿  
 	settextstyle(&choice);  // 
 	setbkmode(TRANSPARENT);
 	settextcolor(BLACK);
-	outtextxy(265,205,_T("ĞÂ»­¾í"));
-	outtextxy(175,295,_T("ÏÈÉúÒÅ¼£"));
-	outtextxy(115,395,_T("´Ë¼äºÎÈË"));
+	outtextxy(265,205,_T("æ–°ç”»å·"));
+	outtextxy(175,295,_T("å…ˆç”Ÿé—è¿¹"));
+	outtextxy(115,395,_T("æ­¤é—´ä½•äºº"));
 	MOUSEMSG m;
-	bool trace =0;//¿´ÊÇ·ñ½øÈë¹ınewgame£¨£©
+	bool trace =0;//çœ‹æ˜¯å¦è¿›å…¥è¿‡newgameï¼ˆï¼‰
 	FlushMouseMsgBuffer();
 	for(bool main_menu_flag=1;main_menu_flag;)
 	{
 		m=GetMouseMsg();
 		if((175<m.x&&m.x<370&&295<m.y&&m.y<345)||(115<m.x&&m.x<310&&395<m.y&&m.y<445)||(265<m.x&&m.x<410&&205<m.y&&m.y<255))
 		{
-			hcur = LoadCursor(NULL, IDC_HAND); // ¼ÓÔØÏµÍ³Ô¤ÖÃµÄÊó±êÑùÊ½
-			SetClassLong(hwnd, GCL_HCURSOR, (long)hcur); // ÉèÖÃ´°¿ÚÀàµÄÊó±êÑùÊ½
+			hcur = LoadCursor(NULL, IDC_HAND); // åŠ è½½ç³»ç»Ÿé¢„ç½®çš„é¼ æ ‡æ ·å¼
+			SetClassLong(hwnd, GCL_HCURSOR, (long)hcur); // è®¾ç½®çª—å£ç±»çš„é¼ æ ‡æ ·å¼
 		}else
 		{
-			hcur = LoadCursor(NULL, IDC_ARROW); // ¼ÓÔØÏµÍ³Ô¤ÖÃµÄÊó±êÑùÊ½
-			SetClassLong(hwnd, GCL_HCURSOR, (long)hcur); // ÉèÖÃ´°¿ÚÀàµÄÊó±êÑùÊ½
+			hcur = LoadCursor(NULL, IDC_ARROW); // åŠ è½½ç³»ç»Ÿé¢„ç½®çš„é¼ æ ‡æ ·å¼
+			SetClassLong(hwnd, GCL_HCURSOR, (long)hcur); // è®¾ç½®çª—å£ç±»çš„é¼ æ ‡æ ·å¼
 		}
 		if(trace)
 		{
-			loadimage(NULL,L"res\\Í¼Æ¬\\¿ªÊ¼±³¾°.jpg",970,630,false);
+			loadimage(NULL,L"res\\å›¾ç‰‡\\å¼€å§‹èƒŒæ™¯.jpg",970,630,false);
 			putimage(200,210,&choicehead,SRCAND);
 			putimage(110,300,&choicehead,SRCAND);
 			putimage(50,400,&choicehead,SRCAND);
@@ -926,30 +926,30 @@ void main_menu()
 			putimage(160,310,&choiceframe,SRCAND);
 			putimage(100,410,&choiceframe,SRCAND);
 			LOGFONT choice;
-			gettextstyle(&choice);                     // »ñÈ¡µ±Ç°×ÖÌåÉèÖÃ
-			choice.lfHeight = 48;                      // ÉèÖÃ×ÖÌå¸ß¶ÈÎª 48
-			_tcscpy_s(choice.lfFaceName, _T("¿¬Ìå"));    // ÉèÖÃ×ÖÌåÎª¡°¿¬Ìå¡±(¸ß°æ±¾ VC ÍÆ¼öÊ¹ÓÃ _tcscpy_s º¯Êı)
-			choice.lfQuality = ANTIALIASED_QUALITY;    // ÉèÖÃÊä³öĞ§¹ûÎª¿¹¾â³İ  
+			gettextstyle(&choice);                     // è·å–å½“å‰å­—ä½“è®¾ç½®
+			choice.lfHeight = 48;                      // è®¾ç½®å­—ä½“é«˜åº¦ä¸º 48
+			_tcscpy_s(choice.lfFaceName, _T("æ¥·ä½“"));    // è®¾ç½®å­—ä½“ä¸ºâ€œæ¥·ä½“â€(é«˜ç‰ˆæœ¬ VC æ¨èä½¿ç”¨ _tcscpy_s å‡½æ•°)
+			choice.lfQuality = ANTIALIASED_QUALITY;    // è®¾ç½®è¾“å‡ºæ•ˆæœä¸ºæŠ—é”¯é½¿  
 			settextstyle(&choice);  // 
 			setbkmode(TRANSPARENT);
 			settextcolor(BLACK);
-			outtextxy(265,205,_T("ĞÂ»­¾í"));
-			outtextxy(175,295,_T("ÏÈÉúÒÅ¼£"));
-			outtextxy(115,395,_T("´Ë¼äºÎÈË"));
+			outtextxy(265,205,_T("æ–°ç”»å·"));
+			outtextxy(175,295,_T("å…ˆç”Ÿé—è¿¹"));
+			outtextxy(115,395,_T("æ­¤é—´ä½•äºº"));
 			trace=0;
 		}
 		switch (m.uMsg)
 		{
-			case WM_LBUTTONDOWN:if(175<m.x&&m.x<370&&295<m.y&&m.y<345)//ÏÈÉúÒÅ¼£
+			case WM_LBUTTONDOWN:if(175<m.x&&m.x<370&&295<m.y&&m.y<345)//å…ˆç”Ÿé—è¿¹
 								{	
 									main_menu_flag=loadrecord();
 									trace=0;
 									if(main_menu_flag==0)
 										replaychoice=1;
 								}
-								if(115<m.x&&m.x<310&&395<m.y&&m.y<445)//´Ë¼äºÎÈË
+								if(115<m.x&&m.x<310&&395<m.y&&m.y<445)//æ­¤é—´ä½•äºº
 								{	 attribute(); trace=0;}
-								if(265<m.x&&m.x<410&&205<m.y&&m.y<255)//ĞÂ»­¾í
+								if(265<m.x&&m.x<410&&205<m.y&&m.y<255)//æ–°ç”»å·
 								{
 									int newgame_choice=newgame();
 									trace=1;
@@ -966,15 +966,15 @@ void main_menu()
 			default:break;
 		}
 	}
-	hcur = LoadCursor(NULL, IDC_ARROW); // ¼ÓÔØÏµÍ³Ô¤ÖÃµÄÊó±êÑùÊ½
-	SetClassLong(hwnd, GCL_HCURSOR, (long)hcur); // ÉèÖÃ´°¿ÚÀàµÄÊó±êÑùÊ½
+	hcur = LoadCursor(NULL, IDC_ARROW); // åŠ è½½ç³»ç»Ÿé¢„ç½®çš„é¼ æ ‡æ ·å¼
+	SetClassLong(hwnd, GCL_HCURSOR, (long)hcur); // è®¾ç½®çª—å£ç±»çš„é¼ æ ‡æ ·å¼
 }
 bool selfdefine()
 {
 	IMAGE choicehead(50,50),choiceframe(140,60);	
-	loadimage(NULL,L"res\\Í¼Æ¬\\¿ªÊ¼±³¾°.jpg",970,630,false);
-	loadimage(&choicehead,L"res\\Í¼Æ¬\\Ñ¡ÏîÍ·Í¼Æ¬.jpg",50,50,false);
-	loadimage(&choiceframe,L"res\\Í¼Æ¬\\Ñ¡Ïî¿¨µ×.jpg",140,60,false);
+	loadimage(NULL,L"res\\å›¾ç‰‡\\å¼€å§‹èƒŒæ™¯.jpg",970,630,false);
+	loadimage(&choicehead,L"res\\å›¾ç‰‡\\é€‰é¡¹å¤´å›¾ç‰‡.jpg",50,50,false);
+	loadimage(&choiceframe,L"res\\å›¾ç‰‡\\é€‰é¡¹å¡åº•.jpg",140,60,false);
 	putimage(200,210,&choicehead,SRCAND);
 	putimage(110,300,&choicehead,SRCAND);
 	putimage(50,400,&choicehead,SRCAND);
@@ -982,16 +982,16 @@ bool selfdefine()
 	putimage(160,310,&choiceframe,SRCAND);
 	putimage(100,410,&choiceframe,SRCAND);
 	LOGFONT choice;
-	gettextstyle(&choice);                     // »ñÈ¡µ±Ç°×ÖÌåÉèÖÃ
-	choice.lfHeight = 48;                      // ÉèÖÃ×ÖÌå¸ß¶ÈÎª 48
-	_tcscpy_s(choice.lfFaceName, _T("¿¬Ìå"));    // ÉèÖÃ×ÖÌåÎª¡°¿¬Ìå¡±(¸ß°æ±¾ VC ÍÆ¼öÊ¹ÓÃ _tcscpy_s º¯Êı)
-	choice.lfQuality = ANTIALIASED_QUALITY;    // ÉèÖÃÊä³öĞ§¹ûÎª¿¹¾â³İ  
+	gettextstyle(&choice);                     // è·å–å½“å‰å­—ä½“è®¾ç½®
+	choice.lfHeight = 48;                      // è®¾ç½®å­—ä½“é«˜åº¦ä¸º 48
+	_tcscpy_s(choice.lfFaceName, _T("æ¥·ä½“"));    // è®¾ç½®å­—ä½“ä¸ºâ€œæ¥·ä½“â€(é«˜ç‰ˆæœ¬ VC æ¨èä½¿ç”¨ _tcscpy_s å‡½æ•°)
+	choice.lfQuality = ANTIALIASED_QUALITY;    // è®¾ç½®è¾“å‡ºæ•ˆæœä¸ºæŠ—é”¯é½¿  
 	settextstyle(&choice);  // 
 	setbkmode(TRANSPARENT);
 	settextcolor(BLACK);
-	outtextxy(405,205,_T("ĞĞ"));
-	outtextxy(315,295,_T("ÁĞ"));
-	outtextxy(255,395,_T("ğ¤½áµã"));
+	outtextxy(405,205,_T("è¡Œ"));
+	outtextxy(315,295,_T("åˆ—"));
+	outtextxy(255,395,_T("é»ç»“ç‚¹"));
 	TCHAR hang[3]={0},lie[3]={0},dotnumber[5]={0};
 	IMAGE hangimg,lieimg,dotnumberimg;
 	getimage(&hangimg,250,200,140,60);
@@ -999,7 +999,7 @@ bool selfdefine()
 	getimage(&dotnumberimg,100,390,140,60);
 	int key,counter=0;
 	fflush(stdin);
-	for(bool hang_flag=1;hang_flag;)		//»ñµÃĞĞÖµ
+	for(bool hang_flag=1;hang_flag;)		//è·å¾—è¡Œå€¼
 	{
 		key=_getch();
 		if(key==13)
@@ -1034,7 +1034,7 @@ bool selfdefine()
 	}
 	counter=0;
 	fflush(stdin);
-	for(bool lie_flag=1;lie_flag;)		//»ñµÃÁĞÖµ
+	for(bool lie_flag=1;lie_flag;)		//è·å¾—åˆ—å€¼
 	{
 		key=_getch();
 		if(key==13)
@@ -1069,7 +1069,7 @@ bool selfdefine()
 	}
 	counter=0;
 	fflush(stdin);
-	for(bool dot_flag=1;dot_flag;)							//»ñµÃ"À×"Öµ
+	for(bool dot_flag=1;dot_flag;)							//è·å¾—"é›·"å€¼
 	{
 		key=_getch();
 		if(key==13)
@@ -1107,9 +1107,9 @@ bool selfdefine()
 int newgame()
 {
 	IMAGE choicehead(50,50),choiceframe(210,60);
-	loadimage(NULL,L"res\\Í¼Æ¬\\¿ªÊ¼±³¾°.jpg",970,630,false);
-	loadimage(&choicehead,L"res\\Í¼Æ¬\\Ñ¡ÏîÍ·Í¼Æ¬.jpg",50,50,false);
-	loadimage(&choiceframe,L"res\\Í¼Æ¬\\Ñ¡Ïî¿¨µ×.jpg",210,60,false);
+	loadimage(NULL,L"res\\å›¾ç‰‡\\å¼€å§‹èƒŒæ™¯.jpg",970,630,false);
+	loadimage(&choicehead,L"res\\å›¾ç‰‡\\é€‰é¡¹å¤´å›¾ç‰‡.jpg",50,50,false);
+	loadimage(&choiceframe,L"res\\å›¾ç‰‡\\é€‰é¡¹å¡åº•.jpg",210,60,false);
 	putimage(320,120,&choicehead,SRCAND);
 	putimage(200,210,&choicehead,SRCAND);
 	putimage(110,300,&choicehead,SRCAND);
@@ -1119,17 +1119,17 @@ int newgame()
 	putimage(160,310,&choiceframe,SRCAND);
 	putimage(100,410,&choiceframe,SRCAND);
 	LOGFONT choice;
-	gettextstyle(&choice);                     // »ñÈ¡µ±Ç°×ÖÌåÉèÖÃ
-	choice.lfHeight = 48;                      // ÉèÖÃ×ÖÌå¸ß¶ÈÎª 48
-	_tcscpy_s(choice.lfFaceName, _T("¿¬Ìå"));    // ÉèÖÃ×ÖÌåÎª¡°¿¬Ìå¡±(¸ß°æ±¾ VC ÍÆ¼öÊ¹ÓÃ _tcscpy_s º¯Êı)
-	choice.lfQuality = ANTIALIASED_QUALITY;    // ÉèÖÃÊä³öĞ§¹ûÎª¿¹¾â³İ  
+	gettextstyle(&choice);                     // è·å–å½“å‰å­—ä½“è®¾ç½®
+	choice.lfHeight = 48;                      // è®¾ç½®å­—ä½“é«˜åº¦ä¸º 48
+	_tcscpy_s(choice.lfFaceName, _T("æ¥·ä½“"));    // è®¾ç½®å­—ä½“ä¸ºâ€œæ¥·ä½“â€(é«˜ç‰ˆæœ¬ VC æ¨èä½¿ç”¨ _tcscpy_s å‡½æ•°)
+	choice.lfQuality = ANTIALIASED_QUALITY;    // è®¾ç½®è¾“å‡ºæ•ˆæœä¸ºæŠ—é”¯é½¿  
 	settextstyle(&choice);  // 
 	setbkmode(TRANSPARENT);
 	settextcolor(BLACK);
-	outtextxy(385,115,_T("Ğ¡Â¶¹¦Á¦"));
-	outtextxy(265,205,_T("·ç·¶³õÏÔ"));
-	outtextxy(175, 295, _T("ÏÈÉú¶À´´"));
-	outtextxy(130,395,_T("ÇÒ Âı"));
+	outtextxy(385,115,_T("å°éœ²åŠŸåŠ›"));
+	outtextxy(265,205,_T("é£èŒƒåˆæ˜¾"));
+	outtextxy(175, 295, _T("å…ˆç”Ÿç‹¬åˆ›"));
+	outtextxy(130,395,_T("ä¸” æ…¢"));
 	MOUSEMSG m;
 	FlushMouseMsgBuffer();
 	while (true)
@@ -1137,37 +1137,37 @@ int newgame()
 		m=GetMouseMsg();
 		if((385<m.x&&m.x<480&&115<m.y&&m.y<165)||(265<m.x&&m.x<460&&205<m.y&&m.y<255)||(175<m.x&&m.x<280&&295<m.y&&m.y<345)||(130<m.x&&m.x<250&&395<m.y&&m.y<445))
 		{
-			hcur = LoadCursor(NULL, IDC_HAND); // ¼ÓÔØÏµÍ³Ô¤ÖÃµÄÊó±êÑùÊ½
-			SetClassLong(hwnd, GCL_HCURSOR, (long)hcur); // ÉèÖÃ´°¿ÚÀàµÄÊó±êÑùÊ½
+			hcur = LoadCursor(NULL, IDC_HAND); // åŠ è½½ç³»ç»Ÿé¢„ç½®çš„é¼ æ ‡æ ·å¼
+			SetClassLong(hwnd, GCL_HCURSOR, (long)hcur); // è®¾ç½®çª—å£ç±»çš„é¼ æ ‡æ ·å¼
 		}else
 		{
-			hcur = LoadCursor(NULL, IDC_ARROW); // ¼ÓÔØÏµÍ³Ô¤ÖÃµÄÊó±êÑùÊ½
-			SetClassLong(hwnd, GCL_HCURSOR, (long)hcur); // ÉèÖÃ´°¿ÚÀàµÄÊó±êÑùÊ½
+			hcur = LoadCursor(NULL, IDC_ARROW); // åŠ è½½ç³»ç»Ÿé¢„ç½®çš„é¼ æ ‡æ ·å¼
+			SetClassLong(hwnd, GCL_HCURSOR, (long)hcur); // è®¾ç½®çª—å£ç±»çš„é¼ æ ‡æ ·å¼
 		}
 		switch (m.uMsg)
 		{
-		case WM_LBUTTONDOWN:if(385<m.x&&m.x<480&&115<m.y&&m.y<165)//µÚÒ»ÅÅ
+		case WM_LBUTTONDOWN:if(385<m.x&&m.x<480&&115<m.y&&m.y<165)//ç¬¬ä¸€æ’
 							{
-								hcur = LoadCursor(NULL, IDC_ARROW); // ¼ÓÔØÏµÍ³Ô¤ÖÃµÄÊó±êÑùÊ½
-								SetClassLong(hwnd, GCL_HCURSOR, (long)hcur); // ÉèÖÃ´°¿ÚÀàµÄÊó±êÑùÊ½
+								hcur = LoadCursor(NULL, IDC_ARROW); // åŠ è½½ç³»ç»Ÿé¢„ç½®çš„é¼ æ ‡æ ·å¼
+								SetClassLong(hwnd, GCL_HCURSOR, (long)hcur); // è®¾ç½®çª—å£ç±»çš„é¼ æ ‡æ ·å¼
 								return 1;
 							}
-							if(265<m.x&&m.x<460&&205<m.y&&m.y<255)//µÚ¶şÅÅ
+							if(265<m.x&&m.x<460&&205<m.y&&m.y<255)//ç¬¬äºŒæ’
 							{
-								hcur = LoadCursor(NULL, IDC_ARROW); // ¼ÓÔØÏµÍ³Ô¤ÖÃµÄÊó±êÑùÊ½
-								SetClassLong(hwnd, GCL_HCURSOR, (long)hcur); // ÉèÖÃ´°¿ÚÀàµÄÊó±êÑùÊ½
+								hcur = LoadCursor(NULL, IDC_ARROW); // åŠ è½½ç³»ç»Ÿé¢„ç½®çš„é¼ æ ‡æ ·å¼
+								SetClassLong(hwnd, GCL_HCURSOR, (long)hcur); // è®¾ç½®çª—å£ç±»çš„é¼ æ ‡æ ·å¼
 								return 2;
 							}
-							if(175<m.x&&m.x<280&&295<m.y&&m.y<345)//µÚÈıÅÅ
+							if(175<m.x&&m.x<280&&295<m.y&&m.y<345)//ç¬¬ä¸‰æ’
 							{
-								hcur = LoadCursor(NULL, IDC_ARROW); // ¼ÓÔØÏµÍ³Ô¤ÖÃµÄÊó±êÑùÊ½
-								SetClassLong(hwnd, GCL_HCURSOR, (long)hcur); // ÉèÖÃ´°¿ÚÀàµÄÊó±êÑùÊ½
+								hcur = LoadCursor(NULL, IDC_ARROW); // åŠ è½½ç³»ç»Ÿé¢„ç½®çš„é¼ æ ‡æ ·å¼
+								SetClassLong(hwnd, GCL_HCURSOR, (long)hcur); // è®¾ç½®çª—å£ç±»çš„é¼ æ ‡æ ·å¼
 								return 3;
 							}
-							if(130<m.x&&m.x<250&&395<m.y&&m.y<445)//µÚËÄÅÅ
+							if(130<m.x&&m.x<250&&395<m.y&&m.y<445)//ç¬¬å››æ’
 							{
-								hcur = LoadCursor(NULL, IDC_ARROW); // ¼ÓÔØÏµÍ³Ô¤ÖÃµÄÊó±êÑùÊ½
-								SetClassLong(hwnd, GCL_HCURSOR, (long)hcur); // ÉèÖÃ´°¿ÚÀàµÄÊó±êÑùÊ½
+								hcur = LoadCursor(NULL, IDC_ARROW); // åŠ è½½ç³»ç»Ÿé¢„ç½®çš„é¼ æ ‡æ ·å¼
+								SetClassLong(hwnd, GCL_HCURSOR, (long)hcur); // è®¾ç½®çª—å£ç±»çš„é¼ æ ‡æ ·å¼
 								return 4;
 							}
 								break;
@@ -1184,13 +1184,13 @@ int loadrecord()
 		HRGN input_box=CreateRectRgn(500,0,970,640);
 		setcliprgn(input_box);
 		DeleteObject(input_box);
-		TCHAR version[2][30]={_T("ÏÈÉú³õ´Îµ½·Ã"),
-							  _T("»¹Î´ÔøÁôÏÂÎ´Íê³ÉµÄ×÷Æ·")};
+		TCHAR version[2][30]={_T("å…ˆç”Ÿåˆæ¬¡åˆ°è®¿"),
+							  _T("è¿˜æœªæ›¾ç•™ä¸‹æœªå®Œæˆçš„ä½œå“")};
 		LOGFONT choice;
-		gettextstyle(&choice);                     // »ñÈ¡µ±Ç°×ÖÌåÉèÖÃ
-		choice.lfHeight = 35;                      // ÉèÖÃ×ÖÌå¸ß¶ÈÎª 48
-		_tcscpy_s(choice.lfFaceName, _T("¿¬Ìå"));    // ÉèÖÃ×ÖÌåÎª¡°¿¬Ìå¡±(¸ß°æ±¾ VC ÍÆ¼öÊ¹ÓÃ _tcscpy_s º¯Êı)
-		choice.lfQuality = ANTIALIASED_QUALITY;    // ÉèÖÃÊä³öĞ§¹ûÎª¿¹¾â³İ  
+		gettextstyle(&choice);                     // è·å–å½“å‰å­—ä½“è®¾ç½®
+		choice.lfHeight = 35;                      // è®¾ç½®å­—ä½“é«˜åº¦ä¸º 48
+		_tcscpy_s(choice.lfFaceName, _T("æ¥·ä½“"));    // è®¾ç½®å­—ä½“ä¸ºâ€œæ¥·ä½“â€(é«˜ç‰ˆæœ¬ VC æ¨èä½¿ç”¨ _tcscpy_s å‡½æ•°)
+		choice.lfQuality = ANTIALIASED_QUALITY;    // è®¾ç½®è¾“å‡ºæ•ˆæœä¸ºæŠ—é”¯é½¿  
 		settextstyle(&choice);  // 
 		setbkmode(TRANSPARENT);
 		settextcolor(BLACK);
@@ -1247,16 +1247,16 @@ void attribute()
 	HRGN input_box=CreateRectRgn(500,0,970,500);
 	setcliprgn(input_box);
 	DeleteObject(input_box);
-	TCHAR version[5][30]={_T("ÓÎÏ·Ãû£ºĞŞ¸´¾É»­"),
-						  _T("ÖÆ×÷£º²ÜÊéÑô"),
-						  _T("·¢²¼Ê±¼ä£º"),
-						  _T("¶şÁãÒ»ÎåÄêÒ»ÔÂÒ»ÈÕ"),
-						  _T("°æ±¾ºÅ£ºÈıµãÁã")};
+	TCHAR version[5][30]={_T("æ¸¸æˆåï¼šä¿®å¤æ—§ç”»"),
+						  _T("åˆ¶ä½œï¼šæ›¹ä¹¦é˜³"),
+						  _T("å‘å¸ƒæ—¶é—´ï¼š"),
+						  _T("äºŒé›¶ä¸€äº”å¹´ä¸€æœˆä¸€æ—¥"),
+						  _T("ç‰ˆæœ¬å·ï¼šä¸‰ç‚¹é›¶")};
 	LOGFONT choice;
-	gettextstyle(&choice);                     // »ñÈ¡µ±Ç°×ÖÌåÉèÖÃ
-	choice.lfHeight = 35;                      // ÉèÖÃ×ÖÌå¸ß¶ÈÎª 48
-	_tcscpy_s(choice.lfFaceName, _T("¿¬Ìå"));    // ÉèÖÃ×ÖÌåÎª¡°¿¬Ìå¡±(¸ß°æ±¾ VC ÍÆ¼öÊ¹ÓÃ _tcscpy_s º¯Êı)
-	choice.lfQuality = ANTIALIASED_QUALITY;    // ÉèÖÃÊä³öĞ§¹ûÎª¿¹¾â³İ  
+	gettextstyle(&choice);                     // è·å–å½“å‰å­—ä½“è®¾ç½®
+	choice.lfHeight = 35;                      // è®¾ç½®å­—ä½“é«˜åº¦ä¸º 48
+	_tcscpy_s(choice.lfFaceName, _T("æ¥·ä½“"));    // è®¾ç½®å­—ä½“ä¸ºâ€œæ¥·ä½“â€(é«˜ç‰ˆæœ¬ VC æ¨èä½¿ç”¨ _tcscpy_s å‡½æ•°)
+	choice.lfQuality = ANTIALIASED_QUALITY;    // è®¾ç½®è¾“å‡ºæ•ˆæœä¸ºæŠ—é”¯é½¿  
 	settextstyle(&choice);  // 
 	setbkmode(TRANSPARENT);
 	settextcolor(BLACK);
@@ -1278,24 +1278,24 @@ void attribute()
 }
 int firstmenu()
 {
-	loadimage(NULL,L"res\\Í¼Æ¬\\¿ªÊ¼±³¾°.jpg",970,630,false);
+	loadimage(NULL,L"res\\å›¾ç‰‡\\å¼€å§‹èƒŒæ™¯.jpg",970,630,false);
 	IMAGE choicehead(50,50),choiceframe(140,60);
-	loadimage(&choicehead,L"res\\Í¼Æ¬\\Ñ¡ÏîÍ·Í¼Æ¬.jpg",50,50,false);
-	loadimage(&choiceframe,L"res\\Í¼Æ¬\\Ñ¡Ïî¿¨µ×.jpg",140,60,false);
+	loadimage(&choicehead,L"res\\å›¾ç‰‡\\é€‰é¡¹å¤´å›¾ç‰‡.jpg",50,50,false);
+	loadimage(&choiceframe,L"res\\å›¾ç‰‡\\é€‰é¡¹å¡åº•.jpg",140,60,false);
 	putimage(110,300,&choicehead,SRCAND);
 	putimage(50,400,&choicehead,SRCAND);
 	putimage(160,310,&choiceframe,SRCAND);
 	putimage(100,410,&choiceframe,SRCAND);
 	LOGFONT choice;
-	gettextstyle(&choice);                     // »ñÈ¡µ±Ç°×ÖÌåÉèÖÃ
-	choice.lfHeight = 48;                      // ÉèÖÃ×ÖÌå¸ß¶ÈÎª 48
-	_tcscpy_s(choice.lfFaceName, _T("¿¬Ìå"));    // ÉèÖÃ×ÖÌåÎª¡°¿¬Ìå¡±(¸ß°æ±¾ VC ÍÆ¼öÊ¹ÓÃ _tcscpy_s º¯Êı)
-	choice.lfQuality = ANTIALIASED_QUALITY;    // ÉèÖÃÊä³öĞ§¹ûÎª¿¹¾â³İ  
+	gettextstyle(&choice);                     // è·å–å½“å‰å­—ä½“è®¾ç½®
+	choice.lfHeight = 48;                      // è®¾ç½®å­—ä½“é«˜åº¦ä¸º 48
+	_tcscpy_s(choice.lfFaceName, _T("æ¥·ä½“"));    // è®¾ç½®å­—ä½“ä¸ºâ€œæ¥·ä½“â€(é«˜ç‰ˆæœ¬ VC æ¨èä½¿ç”¨ _tcscpy_s å‡½æ•°)
+	choice.lfQuality = ANTIALIASED_QUALITY;    // è®¾ç½®è¾“å‡ºæ•ˆæœä¸ºæŠ—é”¯é½¿  
 	settextstyle(&choice);  // 
 	setbkmode(TRANSPARENT);
 	settextcolor(BLACK);
-	outtextxy(175, 295, _T("³õ·Ã"));
-	outtextxy(115,395,_T("¹éÀ´"));
+	outtextxy(175, 295, _T("åˆè®¿"));
+	outtextxy(115,395,_T("å½’æ¥"));
 	MOUSEMSG m;
 	FlushMouseMsgBuffer();
 	while (true)
@@ -1303,26 +1303,26 @@ int firstmenu()
 		m=GetMouseMsg();
 		if((175<m.x&&m.x<280&&295<m.y&&m.y<345)||(115<m.x&&m.x<220&&395<m.y&&m.y<445))
 		{
-			hcur = LoadCursor(NULL, IDC_HAND); // ¼ÓÔØÏµÍ³Ô¤ÖÃµÄÊó±êÑùÊ½
-			SetClassLong(hwnd, GCL_HCURSOR, (long)hcur); // ÉèÖÃ´°¿ÚÀàµÄÊó±êÑùÊ½
+			hcur = LoadCursor(NULL, IDC_HAND); // åŠ è½½ç³»ç»Ÿé¢„ç½®çš„é¼ æ ‡æ ·å¼
+			SetClassLong(hwnd, GCL_HCURSOR, (long)hcur); // è®¾ç½®çª—å£ç±»çš„é¼ æ ‡æ ·å¼
 		}else
 		{
-			hcur = LoadCursor(NULL, IDC_ARROW); // ¼ÓÔØÏµÍ³Ô¤ÖÃµÄÊó±êÑùÊ½
-			SetClassLong(hwnd, GCL_HCURSOR, (long)hcur); // ÉèÖÃ´°¿ÚÀàµÄÊó±êÑùÊ½
+			hcur = LoadCursor(NULL, IDC_ARROW); // åŠ è½½ç³»ç»Ÿé¢„ç½®çš„é¼ æ ‡æ ·å¼
+			SetClassLong(hwnd, GCL_HCURSOR, (long)hcur); // è®¾ç½®çª—å£ç±»çš„é¼ æ ‡æ ·å¼
 		}
 
 		switch (m.uMsg)
 		{
 			case WM_LBUTTONDOWN:if(175<m.x&&m.x<280&&295<m.y&&m.y<345)
 								{
-									hcur = LoadCursor(NULL, IDC_ARROW); // ¼ÓÔØÏµÍ³Ô¤ÖÃµÄÊó±êÑùÊ½
-									SetClassLong(hwnd, GCL_HCURSOR, (long)hcur); // ÉèÖÃ´°¿ÚÀàµÄÊó±êÑùÊ½
+									hcur = LoadCursor(NULL, IDC_ARROW); // åŠ è½½ç³»ç»Ÿé¢„ç½®çš„é¼ æ ‡æ ·å¼
+									SetClassLong(hwnd, GCL_HCURSOR, (long)hcur); // è®¾ç½®çª—å£ç±»çš„é¼ æ ‡æ ·å¼
 									return 0;
 								}
 								if(115<m.x&&m.x<220&&395<m.y&&m.y<445)
 								{
-									hcur = LoadCursor(NULL, IDC_ARROW); // ¼ÓÔØÏµÍ³Ô¤ÖÃµÄÊó±êÑùÊ½
-									SetClassLong(hwnd, GCL_HCURSOR, (long)hcur); // ÉèÖÃ´°¿ÚÀàµÄÊó±êÑùÊ½
+									hcur = LoadCursor(NULL, IDC_ARROW); // åŠ è½½ç³»ç»Ÿé¢„ç½®çš„é¼ æ ‡æ ·å¼
+									SetClassLong(hwnd, GCL_HCURSOR, (long)hcur); // è®¾ç½®çª—å£ç±»çš„é¼ æ ‡æ ·å¼
 									return 1;
 								}
 								break;
@@ -1345,12 +1345,12 @@ void loadingeffect()
 void begineffect()
 {
 	mciSendString(TEXT("play beginsong repeat"),NULL,0,NULL);
-	TCHAR s[10][100] ={ _T(" »¶Ó­À´µ½Õâ¸öÓÎÏ·"),
-						_T(" ÔÚÕâ¸öÓÎÏ·ÖĞ£¬Äã½«³ÉÎªÒ»Ãû³öÉ«µÄÍ¼»­ĞŞ¸´Ê¦"),
-						_T(" ·÷È¥ÄÇĞ©Í¼»­ÉÏÀúÊ·µÄ³¾°£"),
-						_T(" ÏÖÔÚ¾Í¿ªÊ¼°É£¬¿ªÊ¼ÄãÎ°´óµÄ¹¤×÷"),
+	TCHAR s[10][100] ={ _T(" æ¬¢è¿æ¥åˆ°è¿™ä¸ªæ¸¸æˆ"),
+						_T(" åœ¨è¿™ä¸ªæ¸¸æˆä¸­ï¼Œä½ å°†æˆä¸ºä¸€åå‡ºè‰²çš„å›¾ç”»ä¿®å¤å¸ˆ"),
+						_T(" æ‹‚å»é‚£äº›å›¾ç”»ä¸Šå†å²çš„å°˜åŸƒ"),
+						_T(" ç°åœ¨å°±å¼€å§‹å§ï¼Œå¼€å§‹ä½ ä¼Ÿå¤§çš„å·¥ä½œ"),
 						_T(" ......"),
-						_T(" £¨°´¿Õ¸ñ¼ü¼ÌĞø£©")};
+						_T(" ï¼ˆæŒ‰ç©ºæ ¼é”®ç»§ç»­ï¼‰")};
 	for(int i=0;i<6;i++)
 	{
 		for (int j = 0;s[i][j]!='\0'; j++)
@@ -1366,4 +1366,3 @@ void begineffect()
 		key=_getch();
 	} while (key!=32);
 }
-

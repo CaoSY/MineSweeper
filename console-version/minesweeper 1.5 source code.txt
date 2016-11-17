@@ -34,7 +34,7 @@ void welcome();
 int main()
 {
 	cout<<"Select your language"<<endl;
-	cout<<"¨’English ¨’ÖÐÎÄ"<<endl;
+	cout<<"âŠ•English âŠ•ä¸­æ–‡"<<endl;
 	language=doublechoice(0,1,10);
 	welcome();
 	menu();
@@ -45,9 +45,9 @@ int main()
 		switch(language)
 		{
 			case 0: cout<<"Play again?"<<endl;
-					cout<<"¨’Yes ¨’No"<<endl;break;
-			case 1: cout<<"ÔÙÀ´Ò»ÅÌ£¿"<<endl;
-					cout<<"¨’ÊÇ  ¨’·ñ"<<endl;break;
+					cout<<"âŠ•Yes âŠ•No"<<endl;break;
+			case 1: cout<<"å†æ¥ä¸€ç›˜ï¼Ÿ"<<endl;
+					cout<<"âŠ•æ˜¯  âŠ•å¦"<<endl;break;
 			default :break;
 		}
 		bool replay_choice=doublechoice(0,1,7);
@@ -57,7 +57,7 @@ int main()
 			switch(language)
 			{
 				case 0: cout<<user_name<<", see you next time!"<<endl;break;
-				case 1: cout<<user_name<<"£¬ÏÂ´Î¼û£¡"<<endl;break;
+				case 1: cout<<user_name<<"ï¼Œä¸‹æ¬¡è§ï¼"<<endl;break;
 			}
 			cout<<"( ^_^ )/~~"<<endl;
 			main_flag=0;
@@ -65,8 +65,8 @@ int main()
 		{
 			switch(language)
 			{
-				case 0: cout<<"¨’reuse last field ¨’a new field"<<endl;break;
-				case 1: cout<<"¨’ÖØÍæÉÏ´ÎµÄµØÍ¼   ¨’ÐÂµØÍ¼"<<endl;break;;
+				case 0: cout<<"âŠ•reuse last field âŠ•a new field"<<endl;break;
+				case 1: cout<<"âŠ•é‡çŽ©ä¸Šæ¬¡çš„åœ°å›¾   âŠ•æ–°åœ°å›¾"<<endl;break;;
 			}
 			choice=doublechoice(0,1,19);
 			switch(choice)
@@ -95,15 +95,15 @@ void menu()
 			system("cls");
 			switch(language)
 			{
-				case 0:	cout<<"Menu: ¨’File"<<endl
-					    	<<"      ¨’Help"<<endl
-							<<"      ¨’Start"<<endl;
+				case 0:	cout<<"Menu: âŠ•File"<<endl
+					    	<<"      âŠ•Help"<<endl
+							<<"      âŠ•Start"<<endl;
 						cout<<"(To return to the previous menu(submenu), press the key \"Esc\")"<<endl;
 						break;
-				case 1: cout<<"²Ëµ¥: ¨’ÎÄ¼þ"<<endl
-							<<"      ¨’°ïÖú"<<endl
-							<<"      ¨’¿ªÊ¼"<<endl;
-						cout<<"£¨·µ»ØÉÏ¼¶²Ëµ¥£¨×Ó²Ëµ¥£©£¬°´¡±Esc¡°¼ü£©"<<endl;
+				case 1: cout<<"èœå•: âŠ•æ–‡ä»¶"<<endl
+							<<"      âŠ•å¸®åŠ©"<<endl
+							<<"      âŠ•å¼€å§‹"<<endl;
+						cout<<"ï¼ˆè¿”å›žä¸Šçº§èœå•ï¼ˆå­èœå•ï¼‰ï¼ŒæŒ‰â€Escâ€œé”®ï¼‰"<<endl;
 						break;
 			}
 			menu_choice=multichoice(3,7,0);
@@ -132,12 +132,12 @@ bool help()
 				cout<<"Wish you enjoy the game!"<<endl;
 				cout<<"OK";
 				break;
-		case 1: cout<<"1) ÓÃ¼üÅÌÉÏµÄ·½Ïò¼üÒÆ¶¯ÆÁÄ»ÉÏµÄ¹â±êµ½ÄãÏëµã¿ªµÄÎ»ÖÃ"<<endl;
-				cout<<"2) Èç¹ûÄãÈ·¶¨¹â±êËùÔÚµÄÎ»ÖÃÃ»ÓÐµØÀ×£¬°´¿Õ¸ñ¼ü´ò¿ªºÐ×Ó"<<endl
-					<<"   ×£ÄãºÃÔË£¡"<<endl; 
-				cout<<"3) °´»Ø³µ¼ü±ê¼ÇµØÀ×"<<endl;
-				cout<<"Ï£ÍûÄãÍæµÃÓä¿ì£¡"<<endl;
-				cout<<"È·¶¨";
+		case 1: cout<<"1) ç”¨é”®ç›˜ä¸Šçš„æ–¹å‘é”®ç§»åŠ¨å±å¹•ä¸Šçš„å…‰æ ‡åˆ°ä½ æƒ³ç‚¹å¼€çš„ä½ç½®"<<endl;
+				cout<<"2) å¦‚æžœä½ ç¡®å®šå…‰æ ‡æ‰€åœ¨çš„ä½ç½®æ²¡æœ‰åœ°é›·ï¼ŒæŒ‰ç©ºæ ¼é”®æ‰“å¼€ç›’å­"<<endl
+					<<"   ç¥ä½ å¥½è¿ï¼"<<endl; 
+				cout<<"3) æŒ‰å›žè½¦é”®æ ‡è®°åœ°é›·"<<endl;
+				cout<<"å¸Œæœ›ä½ çŽ©å¾—æ„‰å¿«ï¼"<<endl;
+				cout<<"ç¡®å®š";
 				break; 
 	}
 	getch();
@@ -150,15 +150,15 @@ bool levelchoice(bool &menu_flag)
 	{
 		case 0: cout<<"Which level do you want?"<<endl
 					<<"     area   mine's number"<<endl
-					<<"¨’:   5*5       3"<<endl
-					<<"¨’: 10*10      10"<<endl
-					<<"¨’: self-defined"<<endl;
+					<<"âŠ•:   5*5       3"<<endl
+					<<"âŠ•: 10*10      10"<<endl
+					<<"âŠ•: self-defined"<<endl;
 				break;
-		case 1: cout<<"ÄÑ¶ÈÑ¡Ôñ"<<endl
-					<<"    À×Çø´óÐ¡ µØÀ×¸öÊý"<<endl
-					<<"¨’:   5*5       3"<<endl
-					<<"¨’: 10*10      10"<<endl
-					<<"¨’: ×Ô¶¨Òå"<<endl;
+		case 1: cout<<"éš¾åº¦é€‰æ‹©"<<endl
+					<<"    é›·åŒºå¤§å° åœ°é›·ä¸ªæ•°"<<endl
+					<<"âŠ•:   5*5       3"<<endl
+					<<"âŠ•: 10*10      10"<<endl
+					<<"âŠ•: è‡ªå®šä¹‰"<<endl;
 				break;
 	}
 	int choice=multichoice(3,0,2);
@@ -175,9 +175,9 @@ bool levelchoice(bool &menu_flag)
 							cout<<"Column(<19): ";cin>>column;fflush(stdin);
 							cout<<"Number of mine(s): ";cin>>mine_number;fflush(stdin);
 							break;
-					case 1: cout<<"ÐÐÊý£º";cin>>row;fflush(stdin);
-							cout<<"ÁÐÊý(<19)£º";cin>>column;fflush(stdin);
-							cout<<"µØÀ×Êý£º";cin>>mine_number;fflush(stdin);
+					case 1: cout<<"è¡Œæ•°ï¼š";cin>>row;fflush(stdin);
+							cout<<"åˆ—æ•°(<19)ï¼š";cin>>column;fflush(stdin);
+							cout<<"åœ°é›·æ•°ï¼š";cin>>mine_number;fflush(stdin);
 							break;
 				}
 				menu_flag=0;
@@ -191,11 +191,11 @@ bool file(bool &menu_flag)
 		system("cls");
 		switch(language)
 		{
-			case 0: cout<<"File: ¨’Level"<<endl
-					    <<"      ¨’Attribute"<<endl;
+			case 0: cout<<"File: âŠ•Level"<<endl
+					    <<"      âŠ•Attribute"<<endl;
 					break;
-			case 1: cout<<"ÎÄ¼þ: ¨’ÄÑ¶È"<<endl
-					    <<"      ¨’ÊôÐÔ"<<endl;
+			case 1: cout<<"æ–‡ä»¶: âŠ•éš¾åº¦"<<endl
+					    <<"      âŠ•å±žæ€§"<<endl;
 					break; 
 		}
 		int file_choice=multichoice(2,7,0);
@@ -211,11 +211,11 @@ bool file(bool &menu_flag)
 						 		    <<"version number: 1.5"<<endl;
 						 		cout<<"OK";
 					 			break;	   
-					 	case 1: cout<<"ÓÎÏ·Ãû³Æ£ºÉ¨À×"<<endl
-					 				<<"ÖÆ×÷Õß£º  ²ÜÊéÑô"<<endl
-					 				<<"·¢ÐÐÊ±¼ä£º2014 12 21"<<endl
-					 				<<"°æ±¾ºÅ£º  1.5"<<endl;
-					 			cout<<"È·¶¨"; 
+					 	case 1: cout<<"æ¸¸æˆåç§°ï¼šæ‰«é›·"<<endl
+					 				<<"åˆ¶ä½œè€…ï¼š  æ›¹ä¹¦é˜³"<<endl
+					 				<<"å‘è¡Œæ—¶é—´ï¼š2014 12 21"<<endl
+					 				<<"ç‰ˆæœ¬å·ï¼š  1.5"<<endl;
+					 			cout<<"ç¡®å®š"; 
 								break;
 					}
 					getch();
@@ -235,7 +235,7 @@ void welcome()
 	switch(language)
 	{
 		case 0:cout<<"Please create a name for yourself."<<endl;break;
-		case 1:cout<<"Îª×Ô¼ºÆð¸öÃû×Ö°É¡£"<<endl;break;
+		case 1:cout<<"ä¸ºè‡ªå·±èµ·ä¸ªåå­—å§ã€‚"<<endl;break;
 		default :break;
 	}
 //	char user_name[100];
@@ -244,7 +244,7 @@ void welcome()
 	switch(language)
 	{
 		case 0:cout<<user_name<<", welcome to minesweeper!"<<endl;break;
-		case 1:cout<<user_name<<"£¬»¶Ó­À´µ½É¨À×ÊÀ½ç¡£"<<endl;break;	
+		case 1:cout<<user_name<<"ï¼Œæ¬¢è¿Žæ¥åˆ°æ‰«é›·ä¸–ç•Œã€‚"<<endl;break;	
 	}
 	cout<<"           /  \\     ,    ,"<<endl;
 	cout<<"  _._    _ |oo| _  / \\__/ \\"<<endl;
@@ -259,9 +259,9 @@ void welcome()
 	switch(language)
 	{
 		case 0: cout<<"Go to acquire your task and fulfill it."<<endl;
-				cout<<"¨’OK!"<<endl;break;
-		case 1: cout<<"¿ªÊ¼ÄãµÄÈÎÎñ°É¡£"<<endl;
-				cout<<"¨’ÊÇ£¡"<<endl;break;
+				cout<<"âŠ•OK!"<<endl;break;
+		case 1: cout<<"å¼€å§‹ä½ çš„ä»»åŠ¡å§ã€‚"<<endl;
+				cout<<"âŠ•æ˜¯ï¼"<<endl;break;
 		default :break;
 	}
 	pos={0,14};
@@ -363,7 +363,7 @@ void game()
 		switch(language)
 		{
 			case 0: cout<<"Keep fighting!"<<endl;break;
-			case 1: cout<<"¼ÓÓÍ£¡"<<endl;break;
+			case 1: cout<<"åŠ æ²¹ï¼"<<endl;break;
 		}
 		if(first_click)
 		{
@@ -420,8 +420,8 @@ bool win(clock_t &start)
 					{
 						case 0: cout<<"Sorry, you lose."<<endl;
 								cout<<"I know";break;
-						case 1: cout<<"ºÜÒÅº¶£¬ÄãÊ§°ÜÁË¡£"<<endl;
-								cout<<"È·¶¨";break;
+						case 1: cout<<"å¾ˆé—æ†¾ï¼Œä½ å¤±è´¥äº†ã€‚"<<endl;
+								cout<<"ç¡®å®š";break;
 					}
 					getch(); 
 					return 0;
@@ -450,9 +450,9 @@ bool win(clock_t &start)
 										cout<<"s";
 									cout<<"."; 
 									break;
-							case 1: cout<<"ÄãÓ®ÁË£¬¹§Ï²Äã£¡"<<endl;
-									cout<<"ÄãÔÚ"<<(clock()-start)/60000<<"·ÖÖÓ";
-									cout<<((clock()-start)/1000)%60<<"ÃëÄÚÉ¨ÇåÁËËùÓÐµÄµØÀ×¡£";
+							case 1: cout<<"ä½ èµ¢äº†ï¼Œæ­å–œä½ ï¼"<<endl;
+									cout<<"ä½ åœ¨"<<(clock()-start)/60000<<"åˆ†é’Ÿ";
+									cout<<((clock()-start)/1000)%60<<"ç§’å†…æ‰«æ¸…äº†æ‰€æœ‰çš„åœ°é›·ã€‚";
 									break;
 						}
 						cout<<endl<<endl;
@@ -472,7 +472,7 @@ bool win(clock_t &start)
 		    			switch(language)
 		    			{
 		    				case 0: cout<<"I know.";break;
-		    				case 1: cout<<"ÎÒÖªµÀÁË";break; 
+		    				case 1: cout<<"æˆ‘çŸ¥é“äº†";break; 
 						}
 						getch();
 						return 0;
@@ -547,55 +547,55 @@ void initialize_field()
 }
 void printfield()
 {
-	cout<<"©°";
+	cout<<"â”Œ";
 	for(int i=0;i<column-1;i++)
-		cout<<"©¤©Ð";
-	cout<<"©¤©´"<<endl;
+		cout<<"â”€â”¬";
+	cout<<"â”€â”"<<endl;
 	for(int j=0;j<row-1;j++)
 	{
-		cout<<"©¦";
+		cout<<"â”‚";
 		for(int i=0;i<column;i++)
 		{
 			if(scaned[j+1][i+1]==0)
-				cout<<"¨€"<<"©¦";
+				cout<<"â–ˆ"<<"â”‚";
 			else if(scaned[j+1][i+1]==2)
-				cout<<"¡á"<<"©¦";
+				cout<<"â™‚"<<"â”‚";
 			else if(mine_number_map[j][i]==0)
-					cout<<"¡¡"<<"©¦";
+					cout<<"ã€€"<<"â”‚";
 			else if(mine_number_map[j][i]==-1)
-				cout<<"¡ù"<<"©¦";
+				cout<<"â€»"<<"â”‚";
 			else
-				cout<<mine_number_map[j][i]<<" "<<"©¦";
+				cout<<mine_number_map[j][i]<<" "<<"â”‚";
 		}
-		cout<<endl<<"©À";
+		cout<<endl<<"â”œ";
 		for(int i=0;i<column-1;i++)
-			cout<<"©¤©à";
-		cout<<"©¤©È"<<endl;
+			cout<<"â”€â”¼";
+		cout<<"â”€â”¤"<<endl;
 	}
-	cout<<"©¦";
+	cout<<"â”‚";
 	for(int i=0;i<column;i++)
 	{
 		if(scaned[row][i+1]==0)
-			cout<<"¨€"<<"©¦";
+			cout<<"â–ˆ"<<"â”‚";
 		else if(scaned[row][i+1]==2)
-				cout<<"¡á"<<"©¦";
+				cout<<"â™‚"<<"â”‚";
 		else if(mine_number_map[row-1][i]==0)
-				cout<<"¡¡"<<"©¦";
+				cout<<"ã€€"<<"â”‚";
 		else if(mine_number_map[row-1][i]==-1)
-			cout<<"¡ù"<<"©¦";
+			cout<<"â€»"<<"â”‚";
 		else
-			cout<<mine_number_map[row-1][i]<<" "<<"©¦";
+			cout<<mine_number_map[row-1][i]<<" "<<"â”‚";
 
 	}
-	cout<<endl<<"©¸";
+	cout<<endl<<"â””";
 	for(int i=0;i<column-1;i++)
-		cout<<"©¤©Ø";
-	cout<<"©¤©¼"<<endl;
+		cout<<"â”€â”´";
+	cout<<"â”€â”˜"<<endl;
 	switch(language)
 	{
 		case 0: cout<<"The number of left mine(s): ";
 				cout<<right<<setw(2)<<numberofmine<<endl;break;
-		case 1: cout<<"Ê£ÓàÀ×Êý£º";
+		case 1: cout<<"å‰©ä½™é›·æ•°ï¼š";
 				cout<<right<<setw(2)<<numberofmine<<endl;break; 
 	}
 }
@@ -666,9 +666,3 @@ int move_and_click()
 		}
 	}
 }
-
-
-
-
-
- 
